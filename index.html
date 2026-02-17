@@ -11,112 +11,142 @@
 
 <body>
     <header>
-        <h1>hallo</h1>
+        <h1>Aangifte 2025
+            Erfbelasting </h1>
     </header>
 
     <main>
-        <h2>Aangifte 2025
-            Erfbelasting </h2>
 
-
-        <form>
+        <form method="post">
             <fieldset>
                 <legend>Vul hier de gegevens in van de overledene.</legend>
-                <label for="initial">Voorletter(s): </label>
-                <input type="text" name="initial" id="initial" required />
+                <label for="initial-deceased">Voorletter(s): </label>
+                <input type="text" name="initial-deceased" id="initial-deceased" required>
 
-                <label for="infix">Tussen-voegsel(s): </label>
-                <input type="text" name="infix" id="infix" required />
+                <label for="infix-deceased">Tussen-voegsel(s): </label>
+                <input type="text" name="infix-deceased" id="infix-deceased" required>
 
-                <label for="lname">Achternaam: </label>
-                <input type="text" name="lname" id="lname" required />
+                <label for="lname-deceased">Achternaam: </label>
+                <input type="text" name="lname-deceased" id="lname-deceased" required>
 
-                <label for="bsn">Bsn overledene: </label>
-                <input type="number" name="bsn" id="bsn" required />
+                <label for="bsn-deceased">Bsn overledene: </label>
+                <input type="text" name="bsn-deceased" id="bsn-deceased" required>
 
-                <label for="dateofdeath">Overlijdensdatum: </label>
-                <input type="date" name="dateofdeath" id="dateofdeath" required />
+                <label for="date-of-death-deceased">Overlijdensdatum: </label>
+                <input type="date" name="date-of-death-deceased" id="date-of-death-deceased" required>
             </fieldset>
 
             <fieldset>
                 <legend>Was de overledene getrouwd of had de overledene een
                     geregistreerde partner op het moment van overlijden?</legend>
-                <label><input type="radio" name="deceasedmarried" id="deceasedmarried" value="yes" />Ja</label>
-                <label><input type="radio" name="deceasedmarried" id="deceasedmarried" value="no" /> Nee </label>
+                <label><input type="checkbox" name="deceased-married" id="deceased-married-yes" value="yes">Ja</label>
+                <label><input type="checkbox" name="deceased-married" id="deceased-married-no" value="no"> Nee </label>
             </fieldset>
 
             <fieldset>
                 <legend>Hadden de overledene en diens echtgenoot of
                     geregistreerde partner huwelijkse of partner schaps-
                     voorwaarden laten vastleggen in een notariële akte?</legend>
-                <label><input type="radio" name="deceasedmarriedact" id="deceasedmarriedact" value="yes" />Ja</label>
-                <label><input type="radio" name="deceasedmarriedact" id="deceasedmarriedact" value="no" /> Nee </label>
+                <label><input type="checkbox" name="deceased-married-act" id="deceased-married-act-yes"
+                        value="yes">Ja</label>
+                <label><input type="checkbox" name="deceased-married-act" id="deceased-married-act-no" value="no"> Nee
+                </label>
             </fieldset>
 
             <fieldset>
                 <legend>Hadden de overledene en diens partner een finaal
                     verrekenbeding?</legend>
-                <label><input type="radio" name="deceasedmarriedclause" id="deceasedmarriedclause"
-                        value="yes" />Ja</label>
-                <label><input type="radio" name="deceasedmarriedclause" id="deceasedmarriedclause" value="no" /> Nee
+                <label><input type="checkbox" name="deceased-married-clause" id="deceased-married-clause-yes"
+                        value="yes">Ja</label>
+                <label><input type="checkbox" name="deceased-married-clause" id="deceased-married-clause-no" value="no">
+                    Nee
                 </label>
             </fieldset>
 
             <fieldset>
                 <legend>Vul hier de gegevens in van de overledene.</legend>
-                <label for="dateofmarried">Datum huwelijkse of partnerschapsvoorwaarden: </label>
-                <input type="date" name="dateofmarried" id="dateofmarried" required />
+                <label for="date-of-married">Datum huwelijkse of partnerschapsvoorwaarden: </label>
+                <input type="date" name="date-of-married" id="date-of-married" required>
             </fieldset>
 
             <fieldset>
                 <legend>Had de overledene kinderen?</legend>
-                <label><input type="radio" name="kids" id="kids" value="yes" />Ja</label>
-                <label><input type="radio" name="kids" id="kids" value="no" /> Nee </label>
+                <label><input type="checkbox" name="kids" id="kids-yes" value="yes">Ja</label>
+                <label><input type="checkbox" name="kids" id="kids-no" value="no"> Nee </label>
             </fieldset>
 
             <fieldset>
                 <legend>Is 1 van deze kinderen eerder overleden dan de
                     overledene voor wie u nu aangifte doet?</legend>
-                <label><input type="radio" name="kiddeceased" id="kiddeceased" value="yes" />Ja</label>
-                <label><input type="radio" name="kiddeceased" id="kiddeceased" value="no" /> Nee </label>
+                <label><input type="checkbox" name="kid-deceased" id="kid-deceased-yes" value="yes">Ja</label>
+                <label><input type="checkbox" name="kid-deceased" id="kid-deceased-no" value="no"> Nee </label>
             </fieldset>
 
             <fieldset>
                 <legend>Had dit overleden kind zelf kinderen?</legend>
-                <label><input type="radio" name="kiddeceasedkids" id="kiddeceasedkids" value="yes" />Ja</label>
-                <label><input type="radio" name="kiddeceasedkids" id="kiddeceasedkids" value="no" /> Nee </label>
+                <label><input type="checkbox" name="kid-deceased-kids" id="kid-deceased-kids-yes" value="yes">Ja</label>
+                <label><input type="checkbox" name="kid-deceased-kids" id="kid-deceased-kids-no" value="no"> Nee </label>
             </fieldset>
 
             <fieldset>
                 <legend>Had de overledene een testament?</legend>
-                <label><input type="radio" name="will" id="will" value="yes" />Ja</label>
-                <label><input type="radio" name="will" id="will" value="no" /> Nee </label>
+                <label><input type="checkbox" name="will-deceased" id="will-deceased-yes" value="yes"> Ja </label>
+                <label><input type="checkbox" name="will-deceased" id="will-deceased-no" value="no"> Nee </label>
             </fieldset>
 
             <fieldset>
                 <legend>Vul hier de gegevens in van de notaris die het testament heeft opgemaakt en de
                     datum van het testament.</legend>
-                <label for="notarynumber">Protocolnummer notaris: </label>
-                <input type="number" name="notarynumber" id="notarynumber" required />
+                <label for="notary-number">Protocolnummer notaris: </label>
+                <input type="number" name="notary-number" id="notary-number" required>
 
                 <label for="initialnotary">Voorletter(s): </label>
-                <input type="text" name="initialnotary" id="initialnotary" required />
+                <input type="text" name="initial-notary" id="initial-notary" required>
 
                 <label for="infixnotary">Tussen-voegsel(s): </label>
-                <input type="text" name="infixnotary" id="infixnotary" required />
+                <input type="text" name="infix-notary" id="infix-notary" required>
 
                 <label for="lnamenotary">Achternaam: </label>
-                <input type="text" name="lnamenotary" id="lnamenotary" required />
+                <input type="text" name="lname-notary" id="lname-notary" required>
 
                 <label for="office">Vestigingsplaats: </label>
-                <input type="text" name="office" id="office" required />
+                <input type="text" name="office" id="office" required>
 
                 <label for="dateofwill">Datum van het testament of
                     van de laatste wijziging: </label>
-                <input type="date" name="dateofwill" id="dateofwill" required />
+                <input type="date" name="date-of-will" id="date-of-will" required>
 
-                <label for="bsn">Bsn overledene: </label>
-                <input type="number" name="bsn" id="bsn" required />
+                <label for="bsn-deceased-2">Bsn overledene: </label>
+                <input type="text" name="bsn-deceased-2" id="bsn-deceased-2" required>
+
+            </fieldset>
+
+
+            <fieldset>
+                <legend>Vul de gegevens van de gemachtigde in. De gemachtigde is degene die namens 1 of meerdere
+                    personen
+                    en/of instellingen aangifte doet. Het invullen van een telefoonnummer of e-mailadres is niet
+                    verplicht, maar wel handig. Dan kunnen
+                    wij u makkelijker vragen stellen of uitleg geven.</legend>
+
+                <label for="bsn-representative">Bsn/RSIN gemachtigde: </label>
+                <input type="text" name="bsn-representative" id="bsn-representative" required>
+
+                <label for="becon-number-advisor">Beconnummer adviseur: </label>
+                <input type="text" name="becon-number-advisor" id="becon-number-advisor" required>
+
+                <label for="notary-number-2">Protocolnummer notaris: </label>
+                <input type="text" name="notary-number-2" id="notary-number-2" required>
+
+                 <label for="initial-representative">Voorletter(s) gemachtigde: </label>
+                <input type="text" name="initial-representative" id="initial-representative" required>
+
+                <label for="infix-representative">Tussen-voegsel(s) gemachtigde: </label>
+                <input type="text" name="infix-representative" id="infix-representative" required>
+
+                <label for="lname-representative">Achternaam gemachtigde: </label>
+                <input type="text" name="lname-representative" id="lname-representative" required>
+
 
             </fieldset>
 

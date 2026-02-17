@@ -28,6 +28,10 @@ Website voor het vak Browser tech
 
 
 <h2>Dag 2 (17-02-2026)</h2>
+
+https://github.com/orgs/mdn/discussions/242
+
+
 <h2>Dag 3 (18-02-2026)</h2>
 <h2>Dag 4 (19-02-2026)</h2>
 <h2>Dag 5 (20-02-2026)</h2>
