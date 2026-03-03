@@ -1,0 +1,114 @@
+/* ===== NS KLEUREN ===== */
+:root {
+  --ns-blue: #003082;
+  --ns-yellow: #FFC917;
+  --ns-light-gray: #f4f6f8;
+  --ns-border: #dcdfe4;
+  --ns-text: #1a1a1a;
+}
+
+/* ===== RESET ===== */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background-color: var(--ns-light-gray);
+  color: var(--ns-text);
+}
+
+/* ===== HEADER ===== */
+header {
+  background-color: var(--ns-blue);
+  color: white;
+  padding: 2rem;
+}
+
+header h1 {
+  font-size: 1.4rem;
+  font-weight: bold;
+}
+
+header h2 {
+  margin-top: 2rem;
+  font-size: 1.7rem;
+  font-weight: normal;
+}
+
+/* ===== MAIN LAYOUT ===== */
+main {
+  max-width: 1000px;
+  margin: 2rem auto;
+  padding: 1rem;
+}
+
+/* ===== FORM ===== */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* ===== FIELDSETS ===== */
+fieldset {
+  background-color: white;
+  border: none;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+}
+
+legend {
+  font-weight: bold;
+  color: var(--ns-blue);
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+}
+
+/* ===== LABELS ===== */
+label {
+  display: block;
+  margin-top: 1rem;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+/* ===== INPUTS ===== */
+input[type="text"],
+input[type="number"],
+input[type="date"],
+input[type="email"],
+input[list] {
+  width: 100%;
+  padding: 0.75rem;
+  margin-top: 0.4rem;
+  border: 1px solid var(--ns-border);
+  border-radius: 4px;
+  font-size: 1rem;
+  transition: all 0.2s ease;
+}
+
+/* Focus effect (NS geel randje) */
+input:focus {
+  outline: none;
+  border-color: var(--ns-yellow);
+  box-shadow: 0 0 0 3px rgba(255, 201, 23, 0.3);
+}
+
+/* ===== CHECKBOXES ===== */
+input[type="checkbox"] {
+  margin-right: 0.5rem;
+  accent-color: var(--ns-blue);
+}
+
+fieldset label input[type="checkbox"] {
+  margin-top: 0;
+}
+
+fieldset > label {
+  display: inline-flex;
+  align-items: center;
+  margin-right: 1.5rem;
+  font-weight: normal;
+}

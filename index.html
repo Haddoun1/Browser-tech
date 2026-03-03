@@ -11,8 +11,11 @@
 
 <body>
     <header>
-        <h1>Aangifte 2025
-            Erfbelasting </h1>
+        <h1>Dit is een schoolopdracht!</h1>
+
+        <h2>Aangifte 2025
+            Erfbelasting </h2>
+
     </header>
 
     <main>
@@ -39,26 +42,26 @@
             <fieldset>
                 <legend>Was de overledene getrouwd of had de overledene een
                     geregistreerde partner op het moment van overlijden?</legend>
-                <label><input type="checkbox" name="deceased-married" id="deceased-married-yes" value="yes">Ja</label>
-                <label><input type="checkbox" name="deceased-married" id="deceased-married-no" value="no"> Nee </label>
+                <label><input type="radio" name="deceased-married" id="deceased-married-yes" value="yes">Ja</label>
+                <label><input type="radio" name="deceased-married" id="deceased-married-no" value="no"> Nee </label>
             </fieldset>
 
             <fieldset>
                 <legend>Hadden de overledene en diens echtgenoot of
                     geregistreerde partner huwelijkse of partner schaps-
                     voorwaarden laten vastleggen in een notariële akte?</legend>
-                <label><input type="checkbox" name="deceased-married-act" id="deceased-married-act-yes"
+                <label><input type="radio" name="deceased-married-act" id="deceased-married-act-yes"
                         value="yes">Ja</label>
-                <label><input type="checkbox" name="deceased-married-act" id="deceased-married-act-no" value="no"> Nee
+                <label><input type="radio" name="deceased-married-act" id="deceased-married-act-no" value="no"> Nee
                 </label>
             </fieldset>
 
             <fieldset>
                 <legend>Hadden de overledene en diens partner een finaal
                     verrekenbeding?</legend>
-                <label><input type="checkbox" name="deceased-married-clause" id="deceased-married-clause-yes"
+                <label><input type="radio" name="deceased-married-clause" id="deceased-married-clause-yes"
                         value="yes">Ja</label>
-                <label><input type="checkbox" name="deceased-married-clause" id="deceased-married-clause-no" value="no">
+                <label><input type="radio" name="deceased-married-clause" id="deceased-married-clause-no" value="no">
                     Nee
                 </label>
             </fieldset>
@@ -71,27 +74,28 @@
 
             <fieldset>
                 <legend>Had de overledene kinderen?</legend>
-                <label><input type="checkbox" name="kids" id="kids-yes" value="yes">Ja</label>
-                <label><input type="checkbox" name="kids" id="kids-no" value="no"> Nee </label>
+                <label><input type="radio" name="kids" id="kids-yes" value="yes">Ja</label>
+                <label><input type="radio" name="kids" id="kids-no" value="no"> Nee </label>
             </fieldset>
 
             <fieldset>
                 <legend>Is 1 van deze kinderen eerder overleden dan de
                     overledene voor wie u nu aangifte doet?</legend>
-                <label><input type="checkbox" name="kid-deceased" id="kid-deceased-yes" value="yes">Ja</label>
-                <label><input type="checkbox" name="kid-deceased" id="kid-deceased-no" value="no"> Nee </label>
+                <label><input type="radio" name="kid-deceased" id="kid-deceased-yes" value="yes">Ja</label>
+                <label><input type="radio" name="kid-deceased" id="kid-deceased-no" value="no"> Nee </label>
             </fieldset>
 
             <fieldset>
                 <legend>Had dit overleden kind zelf kinderen?</legend>
-                <label><input type="checkbox" name="kid-deceased-kids" id="kid-deceased-kids-yes" value="yes">Ja</label>
-                <label><input type="checkbox" name="kid-deceased-kids" id="kid-deceased-kids-no" value="no"> Nee </label>
+                <label><input type="radio" name="kid-deceased-kids" id="kid-deceased-kids-yes" value="yes">Ja</label>
+                <label><input type="radio" name="kid-deceased-kids" id="kid-deceased-kids-no" value="no"> Nee
+                </label>
             </fieldset>
 
             <fieldset>
                 <legend>Had de overledene een testament?</legend>
-                <label><input type="checkbox" name="will-deceased" id="will-deceased-yes" value="yes"> Ja </label>
-                <label><input type="checkbox" name="will-deceased" id="will-deceased-no" value="no"> Nee </label>
+                <label><input type="radio" name="will-deceased" id="will-deceased-yes" value="yes"> Ja </label>
+                <label><input type="radio" name="will-deceased" id="will-deceased-no" value="no"> Nee </label>
             </fieldset>
 
             <fieldset>
@@ -100,19 +104,19 @@
                 <label for="notary-number">Protocolnummer notaris: </label>
                 <input type="number" name="notary-number" id="notary-number" required>
 
-                <label for="initialnotary">Voorletter(s): </label>
+                <label for="initial-notary">Voorletter(s): </label>
                 <input type="text" name="initial-notary" id="initial-notary" required>
 
-                <label for="infixnotary">Tussen-voegsel(s): </label>
+                <label for="infix-notary">Tussen-voegsel(s): </label>
                 <input type="text" name="infix-notary" id="infix-notary" required>
 
-                <label for="lnamenotary">Achternaam: </label>
+                <label for="lname-notary">Achternaam: </label>
                 <input type="text" name="lname-notary" id="lname-notary" required>
 
                 <label for="office">Vestigingsplaats: </label>
                 <input type="text" name="office" id="office" required>
 
-                <label for="dateofwill">Datum van het testament of
+                <label for="date-of-will">Datum van het testament of
                     van de laatste wijziging: </label>
                 <input type="date" name="date-of-will" id="date-of-will" required>
 
@@ -138,7 +142,7 @@
                 <label for="notary-number-2">Protocolnummer notaris: </label>
                 <input type="text" name="notary-number-2" id="notary-number-2" required>
 
-                 <label for="initial-representative">Voorletter(s) gemachtigde: </label>
+                <label for="initial-representative">Voorletter(s) gemachtigde: </label>
                 <input type="text" name="initial-representative" id="initial-representative" required>
 
                 <label for="infix-representative">Tussen-voegsel(s) gemachtigde: </label>
@@ -146,6 +150,53 @@
 
                 <label for="lname-representative">Achternaam gemachtigde: </label>
                 <input type="text" name="lname-representative" id="lname-representative" required>
+
+                <fieldset>
+                    <legend>Adres in Nederland:</legend>
+                    <label for="street-name-nl">Straat: </label>
+                    <input type="text" name="street-name-nl" id="street-name-nl" required>
+
+                    <label for="housenumber-nl">Huisnummer: </label>
+                    <input type="number" name="housenumber-nl" id="housenumber-nl" required>
+
+                    <label for="suffix-nl">toevoeging: </label>
+                    <input type="text" name="suffix-nl" id="suffix-nl" required>
+
+                    <label for="zipcode-nl">Postcode: </label>
+                    <input type="number" name="zipcode-nl" id="zipcode-nl" required>
+
+                    <label for="city-nl">Woonplaats: </label>
+                    <input type="text" name="city-nl" id="city-nl" required>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Adres in buitenland:</legend>
+                    <label for="street-name-abroad">Straat: </label>
+                    <input type="text" name="street-name-abroad" id="street-name-abroad" required>
+
+                    <label for="housenumber-abroad">Huisnummer: </label>
+                    <input type="number" name="housenumber-abroad" id="housenumber-abroad" required>
+
+                    <label for="zipcode-abroad">Postcode: </label>
+                    <input type="number" name="zipcode-abroad" id="zipcode-abroad" required>
+
+                    <label for="city-abroad">Plaats: </label>
+                    <input type="text" name="city-abroad" id="city-abroad" required>
+
+
+                    <label for="landcode">Landcode: </label>
+                    <input list="countries" id="countryInput" >
+                    <input type="hidden" name="country" id="countryCode">
+                    <datalist id="countries"></datalist>
+
+                    <label for="phonenumber">Telefoonnummer: </label>
+                    <input type="number" name="phonenumber" id="phonenumber" required>
+
+                    <label for="email">E-mailadres: </label>
+                    <input type="email" name="email" id="email" required>
+
+
+                </fieldset>
 
 
             </fieldset>
