@@ -67,3 +67,24 @@ Website voor het vak Browser tech
 <li>Geen bronnen gebruikt vandaag</li>
 </ul>
 
+<h2>Dag 4 (03-03-2026)</h2>
+<h3>Wat heb ik gedaan vandaag?</h3>
+<h3>Hoelang heb ik er aan gewerkt?</h3>
+<h3>Wat heb ik geleerd?</h3>
+<h3>Wat ga ik morgen doen?</h3>
+<h3>Bronnen</h3>
+
+
+<h2>Dag 5 (09-03-2026)</h2>
+<h3>Wat heb ik gedaan vandaag?</h3>
+<p>Vandaag ben ik begonnen met het volgen van de workshop over validatie en wat verschillende manieren zijn om te valideren. Daarna ben ik verder gegaan met het verbeteren van mijn css code. Ik begon bij het beter benoemen van mijn variabelen in de root en daarna met het positioneren van alle elementen. Daarna heb ik nog een voortgang gesprek gehad omdat ik die jammer genoeg had gemist vorige week. Ik kreeg meer insights over wat ik kon doen, en suggesties over hoe iets beter kan. 
+
+<h3>Hoelang heb ik er aan gewerkt?</h3>
+<h3>Wat heb ik geleerd?</h3>
+<h3>Wat ga ik morgen doen?</h3>
+<h3>Bronnen</h3>
+
+
+
+<p>valid werkt ook met fieldset. :user-valid 
+

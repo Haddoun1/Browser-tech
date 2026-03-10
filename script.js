@@ -159,7 +159,8 @@ const countries = [
 const datalist = document.getElementById("countries");
 countries.forEach((c) => {
   const option = document.createElement("option");
-  option.value = c.name;
+  option.value = c.code;
+  option.textContent = c.name;
   datalist.appendChild(option);
 });
 
@@ -171,6 +172,6 @@ const input = document.getElementById("countryInput");
 // zodra gebruiker kiest → tekst vervangen
 input.addEventListener("change", function () {
   if (map[input.value]) {
-    input.value = map[input.value];
+    // input.value = map[input.value];
   }
 });
