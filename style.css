@@ -5,6 +5,17 @@
   --border-color: #dcdfe4;
   --primaire-text-color: #1a1a1a;
   --secundaire-text-color: rgb(0, 99, 212);
+
+  color-scheme: light dark;
+  --bg: light-dark(#f4f4f4, #000000);
+}
+
+:root:has([value="lightmode"]:checked) {
+  color-scheme: light;
+}
+
+:root:has([value="darkmode"]:checked) {
+  color-scheme: dark;
 }
 
 * {
@@ -14,75 +25,95 @@
 
 body {
   margin: 0;
-  background-color: var(--tertiaire-color);
+  background-color: var(--bg);
   color: var(--primaire-text-color);
 }
 
+/* HEADER */
 
 header {
+  display: flex;
+  flex-direction: column;
   background-color: var(--secundaire-color);
   color: var(--primaire-color);
-  padding-top: 1rem;
-  padding-bottom: 1rem;
 }
 
-header h1 {
-  margin-top: 2rem;
-  font-size: 1.7rem;
-  font-weight: bold;
-  display: flex;
-  justify-content: center;
-}
-
-
-marquee {
+header marquee {
   color: red;
   background-color: white;
   border-top: 3px solid black;
   border-bottom: 3px solid black;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin-top: 1rem;
 }
+
+header label:nth-of-type(-n+2):has(input[type="radio"]) {
+  margin: 1rem;
+}
+
+header h1 {
+  font-size: 1.4rem;
+  font-weight: normal;
+  align-self: center;
+  margin: 3rem;
+}
+
+
+
+/* MAIN */
 
 main {
-  padding-top: 5rem;
-  padding-left: 30rem;
-  padding-right: 30rem;
+  max-width: 900px;
+  margin: auto;
+  padding: clamp(2rem, 4vw, 4rem);
 }
 
+/* FORM CARD */
 
-form {
-  display: grid;
-  gap: 2rem;
-  padding-top: 1rem;
+main form {
+  padding: 2rem;
 }
+
+/* FIELDSETS */
 
 fieldset {
+  gap: 1rem;
   display: grid;
-  background-color: white;
-  border: none;
-  padding: 1rem;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  grid-template-columns: auto;
+  padding: 0;
+  margin-bottom: 2rem;
+   border: 3px solid var(--border-color);
+     border-radius: 8px;
 }
 
-fieldset legend {
-display: block;
-  width: calc(100% + 2rem); 
+fieldset fieldset {
+  border: 1px solid var(--border-color);
   padding: 1rem;
-  margin: -1rem -1rem 0 -1rem;
-  background: white;
+  border-radius: 8px;
+}
+
+/* LEGEND */
+
+/* Hulp van Romy */
+
+legend {
   font-weight: bold;
   color: var(--primaire-color);
   font-size: 1.1rem;
-  box-shadow: 0 -8px 12px rgba(0, 0, 0, 0.06);
+  margin-bottom: .5rem;
+  float: left;
 }
 
+/* LABELS */
+
 label {
-  display: block;
-  margin-top: 1rem;
-  font-weight: normal;
-  font-size: 0.9rem;
+  margin-top: .8rem;
+  font-size: .9rem;
   color: var(--secundaire-text-color);
 }
 
+/* INPUTS */
 
 input[type="text"],
 input[type="number"],
@@ -90,20 +121,106 @@ input[type="date"],
 input[type="email"],
 input[list] {
   width: 100%;
-  padding: 0.75rem;
-  margin-top: 0.4rem;
+  padding: .7rem;
+  margin-top: .3rem;
   border: 1px solid var(--border-color);
-  border-radius: 4px;
+  border-radius: 6px;
   font-size: 1rem;
-  transition: all 0.2s ease;
-}
-
-input[type="submit"] {
-  width: 20%
+  transition: all .2s ease;
 }
 
 input:focus {
   outline: none;
   border-color: var(--secundaire-color);
-  box-shadow: 0 0 0 3px rgba(255, 201, 23, 0.3);
+  box-shadow: 0 0 0 3px rgba(255, 201, 23, .35);
+}
+
+/* RADIO BUTTONS ALS NS KNOPPEN */
+
+input[type="radio"] {
+  display: none;
+}
+
+label:has(input[type="radio"]) {
+  display: block;
+  margin-top: .6rem;
+  padding: .7rem 1rem;
+  border-radius: 8px;
+  border: 2px solid var(--primaire-color);
+  background: white;
+  color: var(--primaire-color);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all .15s ease;
+}
+
+label:has(input[type="radio"]):hover {
+  background: rgba(0, 48, 130, .05);
+}
+
+label:has(input[type="radio"]:checked) {
+  background: var(--primaire-color);
+  color: white;
+  border-color: var(--primaire-color);
+}
+
+/* CONDITIONAL SECTIONS */
+
+.open1,
+.open2,
+.open3,
+.open4,
+.open5,
+.open6,
+.open7,
+.open8 {
+  display: none;
+}
+
+form:has(#deceased-married-yes:checked) .open1 {
+  display: block;
+}
+
+form:has(#deceased-married-act-yes:checked) .open2 {
+  display: block;
+}
+
+form:has(#kids-yes:checked) .open3 {
+  display: block;
+}
+
+form:has(#kid-deceased-yes:checked) .open4 {
+  display: block;
+}
+
+form:has(#will-deceased-yes:checked) .open5 {
+  display: block;
+}
+
+form:has(#bsn-option:checked) .open6 {
+  display: block;
+}
+
+form:has(#becon-option:checked) .open7 {
+  display: block;
+}
+
+form:has(#notary-option:checked) .open8 {
+  display: block;
+}
+
+
+
+/* VALIDATIE */
+
+input:user-invalid {
+  border-color: red;
+  color: red;
+  background-color: rgba(255, 0, 0, 0.2);
+}
+
+input:user-valid {
+  border-color: rgb(0, 255, 60);
+  color: rgb(0, 255, 34);
+  background-color: rgba(0, 255, 38, 0.2);
 }

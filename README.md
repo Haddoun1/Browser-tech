@@ -69,9 +69,16 @@ Website voor het vak Browser tech
 
 <h2>Dag 4 (03-03-2026)</h2>
 <h3>Wat heb ik gedaan vandaag?</h3>
+<p>Ik ben verder gegaan met het stylen en aan het bekijken welke patterns ik kan gebruiken. Ik ben uiteindelijk gegaan voor het open klappen van verschillende vragen en iets met de landcode omdat we ook iets met de toelichting kunnen doen. Ik ben ook gaan kijken naar verschillende voorbeelden van hoe mensen de NS style hebben aangepakt en kijken of ik daar inspiratie uit kan halen.</p>
+
 <h3>Hoelang heb ik er aan gewerkt?</h3>
+<p>Ik heb vandaag ongeveer 4 uur besteed aan het stylen en het bekijken van verschillende patterns en voorbeelden. Ik ben ook nog een uur bezig geweest met het bespreken van mijn progressie met mijn medestudenten en het stellen van vragen aan de docenten.</p>
+
 <h3>Wat heb ik geleerd?</h3>
+<p>Ik heb geleerd dat er verschillende manieren zijn om de content van een formulier te verwerken en dat het belangrijk is om te kijken naar voorbeelden van hoe andere mensen het hebben gedaan. Ook heb ik geleerd dat het stellen van vragen aan experts erg waardevol kan zijn, omdat ze vaak tips en inzichten kunnen geven die je zelf misschien niet had bedacht.</p>
+
 <h3>Wat ga ik morgen doen?</h3>
+<p>Morgen ga ik verder met het stylen en hopelijk wat meer leren over hoe ik dat het beste kan aanpakken. Ik wil ook nog een begin maken aan de validatie van mijn formulier, omdat dat ook een belangrijk onderdeel is van het vak.</p>
 <h3>Bronnen</h3>
 
 
@@ -80,7 +87,10 @@ Website voor het vak Browser tech
 <p>Vandaag ben ik begonnen met het volgen van de workshop over validatie en wat verschillende manieren zijn om te valideren. Daarna ben ik verder gegaan met het verbeteren van mijn css code. Ik begon bij het beter benoemen van mijn variabelen in de root en daarna met het positioneren van alle elementen. Daarna heb ik nog een voortgang gesprek gehad omdat ik die jammer genoeg had gemist vorige week. Ik kreeg meer insights over wat ik kon doen, en suggesties over hoe iets beter kan. 
 
 <h3>Hoelang heb ik er aan gewerkt?</h3>
+<p>Ik heb vandaag ongeveer een uur besteed aan het volgen van de workshop over validatie, daarna ben ik ongeveer 3 uur bezig geweest met het verbeteren van mijn styling. Ook heb ik ongeveer een half uur besteed aan het maken van de validatie. Tot slot de checkout waar ongeveer een kwartier aan besteed is.</p>
+
 <h3>Wat heb ik geleerd?</h3>
+<p>
 <h3>Wat ga ik morgen doen?</h3>
 <h3>Bronnen</h3>
 

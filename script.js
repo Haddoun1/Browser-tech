@@ -172,6 +172,6 @@ const input = document.getElementById("countryInput");
 // zodra gebruiker kiest → tekst vervangen
 input.addEventListener("change", function () {
   if (map[input.value]) {
-    // input.value = map[input.value];
+     input.value = map[input.value];
   }
 });
