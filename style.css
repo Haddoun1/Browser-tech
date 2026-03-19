@@ -1,21 +1,12 @@
+
 :root {
   --primaire-color: #003082;
   --secundaire-color: #FFC917;
   --tertiaire-color: #f4f6f8;
-  --border-color: #f4f4f4;
+  --border-color: #dadada;
   --primaire-text-color: #1a1a1a;
   --secundaire-text-color: rgb(0, 99, 212);
-
-  color-scheme: light dark;
-  --bg: light-dark(#f4f4f4, #000000);
-}
-
-:root:has([value="lightmode"]:checked) {
-  color-scheme: light;
-}
-
-:root:has([value="darkmode"]:checked) {
-  color-scheme: dark;
+  --bg: #E6E6E9;
 }
 
 * {
@@ -51,23 +42,12 @@ header marquee {
 }
 
 header h1 {
-  grid-column: 1;
   font-size: clamp(1.1rem, 2vw, 2rem);
   font-weight: 600;
   margin-left: clamp(4.5rem, 18vw, 17rem);
   margin-right: clamp(4.5rem, 18vw, 17rem);
   margin-top: 2rem;
   margin-bottom: 2rem;
-}
-
-/* eerste radio (light) */
-header label:has([value="lightmode"]) {
-  grid-column: 2;
-}
-
-/* tweede radio (dark) */
-header label:has([value="darkmode"]) {
-  grid-column: 3;
 }
 
 
@@ -85,9 +65,8 @@ fieldset {
   gap: 1rem;
   display: grid;
   grid-template-columns: auto;
-  padding: 2rem;
   margin-bottom: 2rem;
-  border: 3px solid var(--border-color);
+  border: 3px solid white;
   background-color: white;
   box-shadow: 0 .125rem 0 0 rgba(7, 7, 33, .15);
 }
@@ -105,9 +84,22 @@ legend {
   color: var(--primaire-color);
   font-size: 1.1rem;
   margin-bottom: .5rem;
-  float: left;
 }
 
+.firstlegend {
+  float: left;
+  padding-top: 1rem;
+}
+
+.secondlegend {
+  font-size: 1rem;
+}
+
+/* p */
+
+p {
+  color: var(--secundaire-text-color);
+}
 
 /* LABELS */
 
@@ -117,17 +109,18 @@ label {
   color: var(--secundaire-text-color);
 }
 
-/* INPUTS */
+/* INPUTS STYLING */
 
 input[type="text"],
 input[type="number"],
 input[type="date"],
 input[type="email"],
+input[type="tel"],
 input[list] {
   width: 100%;
   padding: .7rem;
   margin-top: .3rem;
-  border: 1px solid var(--border-color);
+  border: 2px solid var(--border-color);
   border-radius: 6px;
   font-size: 1rem;
   transition: all .2s ease;
@@ -139,7 +132,7 @@ input:focus {
   box-shadow: 0 0 0 3px rgba(255, 201, 23, .35);
 }
 
-/* RADIO BUTTONS ALS NS KNOPPEN */
+/* RADIO BUTTONS */
 
 input[type="radio"] {
   display: none;
@@ -168,7 +161,25 @@ label:has(input[type="radio"]:checked) {
   border-color: var(--primaire-color);
 }
 
-/* CONDITIONAL SECTIONS */
+/* BUTTON */
+
+button {
+  background-color: var(--secundaire-text-color);
+  color: white;
+  margin-top: 1rem;
+  margin-bottom: 3rem;
+  padding-top: 0.8rem;
+  padding-left: 3rem;
+  padding-right: 3rem;
+  padding-bottom: 0.8rem;
+  font-size: 1rem;
+  font-weight: normal;
+  border: none;
+  border-radius: 3px;
+
+}
+
+/* PATTERN 1 */
 
 .open1,
 .open2,
@@ -183,6 +194,7 @@ label:has(input[type="radio"]:checked) {
 
 form:has(#deceased-married-yes:checked) .open1 {
   display: block;
+  transition: all 0.25s;
 }
 
 form:has(#deceased-married-act-yes:checked) .open2 {
@@ -214,7 +226,6 @@ form:has(#notary-option:checked) .open8 {
 }
 
 
-
 /* VALIDATIE */
 
 input:user-invalid {
@@ -227,3 +238,4 @@ input:user-valid {
   border-color: rgb(0, 255, 60);
   background-color: rgba(0, 255, 38, 0.2);
 }
+

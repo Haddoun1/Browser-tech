@@ -14,13 +14,6 @@
 
         <marquee scrollamount="10vw">Dit is een schoolopdracht!</marquee>
 
-        <label>
-            <input type="radio" name="colors" value="lightmode" checked> Light mode
-        </label>
-        <label>
-            <input type="radio" name="colors" value="darkmode"> Dark mode
-        </label>
-
         <h1>Aangifte 2025 Erfbelasting </h1>
 
     </header>
@@ -32,12 +25,13 @@
         <form>
 
             <!-- VRAAG 1 -->
-            <!-- Vraag 1A -->
+
             <fieldset>
-                <legend>Gegevens van de overledene</legend>
+                <!-- Vraag 1A -->
+                <legend class="firstlegend">1. Gegevens van de overledene</legend>
 
                 <fieldset>
-                    <legend>Vul hier de gegevens in van de overledene.</legend>
+                    <legend class="secondlegend">Vul hier de gegevens in van de overledene.</legend>
 
 
                     <label for="initial-deceased">Voorletter(s): </label>
@@ -50,7 +44,7 @@
                     <input type="text" name="lname-deceased" id="lname-deceased" required>
 
                     <label for="bsn-deceased">Bsn overledene: </label>
-                    <input type="number" name="bsn-deceased" id="bsn-deceased" min="10" max="100000000" required>
+                    <input type="text" name="bsn-deceased" id="bsn-deceased" min="10" max="100000000" required>
 
                     <label for="date-of-death-deceased">Overlijdensdatum: </label>
                     <input type="date" name="date-of-death-deceased" id="date-of-death-deceased" value="2025-01-01"
@@ -61,7 +55,7 @@
                 <!-- Vraag 1B -->
 
                 <fieldset>
-                    <legend>
+                    <legend class="secondlegend">
                         Was de overledene getrouwd of had de overledene een
                         geregistreerde partner op het moment van overlijden?
                     </legend>
@@ -78,7 +72,7 @@
                 </fieldset>
 
                 <fieldset class="open1">
-                    <legend>
+                    <legend class="secondlegend">
                         Hadden de overledene en diens echtgenoot of geregistreerde partner
                         huwelijkse of partnerschapsvoorwaarden laten vastleggen in een notariële akte?
                     </legend>
@@ -95,7 +89,7 @@
                 </fieldset>
 
                 <fieldset class="open2">
-                    <legend>
+                    <legend class="secondlegend">
                         Stuur een kopie van de akte mee met de aangifte.
                     </legend>
 
@@ -107,7 +101,7 @@
 
 
                 <fieldset class="open2">
-                    <legend>
+                    <legend class="secondlegend">
                         Hadden de overledene en diens partner een finaal verrekenbeding?
                     </legend>
 
@@ -124,7 +118,7 @@
 
 
                 <fieldset class="open2">
-                    <legend>Vul hier de gegevens in van de overledene.</legend>
+                    <legend class="secondlegend">Vul hier de gegevens in van de overledene.</legend>
                     <label for="date-of-married">Datum huwelijkse of partnerschapsvoorwaarden: </label>
                     <input type="date" name="date-of-married" id="date-of-married" required>
                 </fieldset>
@@ -134,20 +128,20 @@
                 <!-- Vraag 1C -->
 
                 <fieldset>
-                    <legend>Had de overledene kinderen?</legend>
+                    <legend class="secondlegend">Had de overledene kinderen?</legend>
                     <label><input type="radio" name="kids" id="kids-yes" value="yes">Ja</label>
                     <label><input type="radio" name="kids" id="kids-no" value="no"> Nee </label>
                 </fieldset>
 
                 <fieldset class="open3">
-                    <legend>Is 1 van deze kinderen eerder overleden dan de
+                    <legend class="secondlegend">Is 1 van deze kinderen eerder overleden dan de
                         overledene voor wie u nu aangifte doet?</legend>
                     <label><input type="radio" name="kid-deceased" id="kid-deceased-yes" value="yes">Ja</label>
                     <label><input type="radio" name="kid-deceased" id="kid-deceased-no" value="no"> Nee </label>
                 </fieldset>
 
                 <fieldset class="open4">
-                    <legend>Had dit overleden kind zelf kinderen?</legend>
+                    <legend class="secondlegend">Had dit overleden kind zelf kinderen?</legend>
                     <label><input type="radio" name="kid-deceased-kids" id="kid-deceased-kids-yes"
                             value="yes">Ja</label>
                     <label><input type="radio" name="kid-deceased-kids" id="kid-deceased-kids-no" value="no"> Nee
@@ -159,13 +153,14 @@
                 <!-- Vraag 1D -->
 
                 <fieldset>
-                    <legend>Had de overledene een testament?</legend>
+                    <legend class="secondlegend">Had de overledene een testament?</legend>
                     <label><input type="radio" name="will-deceased" id="will-deceased-yes" value="yes"> Ja </label>
                     <label><input type="radio" name="will-deceased" id="will-deceased-no" value="no"> Nee </label>
                 </fieldset>
 
                 <fieldset class="open5">
-                    <legend>Vul hier de gegevens in van de notaris die het testament heeft opgemaakt en de
+                    <legend class="secondlegend">Vul hier de gegevens in van de notaris die het testament heeft
+                        opgemaakt en de
                         datum van het testament.</legend>
                     <label for="notary-number">Protocolnummer notaris:
                         <input type="number" name="notary-number" id="notary-number" required></label>
@@ -203,38 +198,44 @@
 
             <!-- Vraag 2A -->
             <fieldset>
-                <legend>
-                    Vul de gegevens van de gemachtigde in. De gemachtigde is degene die namens 1 of meerdere
+                <legend class="firstlegend">
+                    2. Gegevens van de gemachtigde.
+
+                    <!-- De gemachtigde is degene die namens 1 of meerdere
                     personen en/of instellingen aangifte doet. Het invullen van een telefoonnummer of e-mailadres is
                     niet
-                    verplicht, maar wel handig. Dan kunnen wij u makkelijker vragen stellen of uitleg geven.
+                    verplicht, maar wel handig. Dan kunnen wij u makkelijker vragen stellen of uitleg geven. -->
                 </legend>
 
-                <p>Kies één van de opties:</p>
+                <fieldset>
 
-                <label>
-                    <input type="radio" name="representative-type" id="bsn-option" value="bsn">
-                    Bsn/RSIN gemachtigde
-                </label>
+                    <p>Kies één van de opties:</p>
 
-                <label>
-                    <input type="radio" name="representative-type" id="becon-option" value="becon">
-                    Beconnummer adviseur
-                </label>
+                    <label>
+                        <input type="radio" name="representative-type" id="bsn-option" value="bsn">
+                        Bsn/RSIN gemachtigde
+                    </label>
 
-                <label>
-                    <input type="radio" name="representative-type" id="notary-option" value="notary">
-                    Protocolnummer notaris
-                </label>
+                    <label>
+                        <input type="radio" name="representative-type" id="becon-option" value="becon">
+                        Beconnummer adviseur
+                    </label>
 
-                <label class="open6" for="bsn-representative">Bsn/RSIN gemachtigde:
-                    <input type="text" name="bsn-representative" id="bsn-representative"></label>
+                    <label>
+                        <input type="radio" name="representative-type" id="notary-option" value="notary">
+                        Protocolnummer notaris
+                    </label>
 
-                <label class="open7" for="becon-number-advisor">Beconnummer adviseur:
-                    <input type="text" name="becon-number-advisor" id="becon-number-advisor"></label>
+                    <label class="open6" for="bsn-representative">Bsn/RSIN gemachtigde:
+                        <input type="text" name="bsn-representative" id="bsn-representative"></label>
 
-                <label class="open8" for="notary-number-2">Protocolnummer notaris:
-                    <input type="text" name="notary-number-2" id="notary-number-2"></label>
+                    <label class="open7" for="becon-number-advisor">Beconnummer adviseur:
+                        <input type="text" name="becon-number-advisor" id="becon-number-advisor"></label>
+
+                    <label class="open8" for="notary-number-2">Protocolnummer notaris:
+                        <input type="text" name="notary-number-2" id="notary-number-2"></label>
+
+                </fieldset>
 
 
                 <!-- Vraag 2A -->
@@ -242,15 +243,15 @@
                 <!-- Vraag 2B -->
 
                 <fieldset>
-                    <legend>
-                        Vul de gegevens van de gemachtigde in.
+                    <legend class="secondlegend">
+                        Vul hier de gegevens van de gemachtigde in.
                     </legend>
 
                     <label for="initial-representative">Voorletter(s) gemachtigde: </label>
                     <input type="text" name="initial-representative" id="initial-representative" required>
 
                     <label for="infix-representative">Tussen-voegsel(s) gemachtigde: </label>
-                    <input type="text" name="infix-representative" id="infix-representative" required>
+                    <input type="text" name="infix-representative" id="infix-representative">
 
                     <label for="lname-representative">Achternaam gemachtigde: </label>
                     <input type="text" name="lname-representative" id="lname-representative" required>
@@ -258,7 +259,7 @@
                 </fieldset>
 
                 <fieldset>
-                    <legend>Adres in Nederland:</legend>
+                    <legend class="secondlegend">Adres in Nederland:</legend>
                     <label for="street-name-nl">Straat: </label>
                     <input type="text" name="street-name-nl" id="street-name-nl" required>
 
@@ -269,22 +270,25 @@
                     <input type="text" name="suffix-nl" id="suffix-nl" required>
 
                     <label for="zipcode-nl">Postcode: </label>
-                    <input type="number" name="zipcode-nl" id="zipcode-nl" required>
+                    <input type="text" name="zipcode-nl" id="zipcode-nl" required>
 
                     <label for="city-nl">Woonplaats: </label>
                     <input type="text" name="city-nl" id="city-nl" required>
                 </fieldset>
 
                 <fieldset>
-                    <legend>Adres in buitenland:</legend>
+                    <legend class="secondlegend">Adres in buitenland:</legend>
                     <label for="street-name-abroad">Straat: </label>
                     <input type="text" name="street-name-abroad" id="street-name-abroad" required>
 
                     <label for="housenumber-abroad">Huisnummer: </label>
                     <input type="number" name="housenumber-abroad" id="housenumber-abroad" required>
 
+                    <label for="housenumber-abroad">Toevoeging: </label>
+                    <input type="text" name="addition-abroad" id="addition-abroad" required>
+
                     <label for="zipcode-abroad">Postcode: </label>
-                    <input type="number" name="zipcode-abroad" id="zipcode-abroad" required>
+                    <input type="text" name="zipcode-abroad" id="zipcode-abroad" required>
 
                     <label for="city-abroad">Plaats: </label>
                     <input type="text" name="city-abroad" id="city-abroad" required>
@@ -292,20 +296,22 @@
 
                     <label for="countryInput">Land: </label>
                     <input list="countries" id="countryInput">
-                    <input type="hidden" name="country" id="countryCode">
+                    <input type="hidden" name="country" id="countryCode" required>
                     <datalist id="countries"></datalist>
 
                     <label for="phonenumber">Telefoonnummer: </label>
-                    <input type="number" name="phonenumber" id="phonenumber" min="10" max="99999999999" required>
+                    <input type="tel" name="phonenumber" id="phonenumber" min="10" max="99999999999" required>
 
                     <label for="email">E-mailadres: </label>
                     <input type="email" name="email" id="email" required>
 
 
                 </fieldset>
+
+                <!-- Vraag 2B -->
             </fieldset>
 
-            <!-- Vraag 2B -->
+
 
             <!-- ENDE VRAAG 2 -->
 

@@ -90,11 +90,40 @@ Website voor het vak Browser tech
 <p>Ik heb vandaag ongeveer een uur besteed aan het volgen van de workshop over validatie, daarna ben ik ongeveer 3 uur bezig geweest met het verbeteren van mijn styling. Ook heb ik ongeveer een half uur besteed aan het maken van de validatie. Tot slot de checkout waar ongeveer een kwartier aan besteed is.</p>
 
 <h3>Wat heb ik geleerd?</h3>
-<p>
+<p>Ik heb geleerd dat er verschillende manieren zijn om te valideren en dat het belangrijk is om te kijken naar voorbeelden van hoe andere mensen het hebben gedaan. 
 <h3>Wat ga ik morgen doen?</h3>
+<p>Morgen ga ik verder met het verbeteren van mijn styling. Ook ga ik kijken of er nog iets te doen is dat mijn formulier beter kan maken.</p>
 <h3>Bronnen</h3>
 
+<h2>Dag 6 (10-03-2026)</h2>
+<h3>Wat heb ik gedaan vandaag?</h3>
+<p>Vandaag ben ik verder gegaan met het verbeteren van mijn styling en het toevoegen van de validatie. Ik was erg lang bezig met de styling want ik vond dat de formulier niet logisch was ingedeeld dus me code viel soort van uitelkaar. Ik heb dus de hele structuur van mijn code veranderd en nu bij elke hoofd vraag in een aparte fieldset gezet. 
+<h3>Hoelang heb ik er aan gewerkt?</h3>
+<p>Ik ben de hele dag bezig geweest met het verbeteren van mijn styling en hierachy en daarna een kwartier besteed aan de checkout. 
+<h3>Wat heb ik geleerd?</h3>
+<p>Ik heb geleerd dat het belangrijk is dat de structuur van je code logisch is voordat je doorgaat met de styling. 
+<h3>Wat ga ik morgen doen?</h3>
+<p>Ik ga proberen om morgen alles te fixen qua structuur en verder te kijken naar validatie. 
+<h3>Bronnen</h3>
 
+<h2>Dag 7 (16-03-2026)</h2>
+<h3>Wat heb ik gedaan vandaag?</h3>
+<p>Vandaag ben ik verder gegaan met het verbeteren van mijn styling en het toevoegen van de validatie. Ik was erg lang bezig met de styling want ik vond dat de formulier niet logisch was ingedeeld dus me code viel soort van uitelkaar. Ik heb dus de hele structuur van mijn code veranderd en nu bij elke hoofd vraag in een aparte fieldset gezet. Daarna heb ik als tip gekregen van Romy om mijn legend de float atribute te geven zodat het uit de fieldset komt. Dit maakte de formulier veel mooier en ik kon ook de NS style beter volgen. </p>
+<h3>Hoelang heb ik er aan gewerkt?</h3>
+<p>Ik ben de hele dag bezig geweest met het verbeteren van mijn styling en hierachy en daarna een kwartier besteed aan de checkout. </p>
+<h3>Wat heb ik geleerd?</h3>
+<p>Ik heb geleerd dat er altijd wat te leren is en dat het makkelijker is om te vragen om hulp dan zoeken naar oplossingen op de web of AI. 
+<h3>Wat ga ik morgen doen?</h3>
+<p>Ik ga proberen om zoveel mogelijk de NS style te volgen en verder te kijken naar validatie. </p>
+<h3>Bronnen</h3>
 
-<p>valid werkt ook met fieldset. :user-valid 
+<h2>Dag 8 (17-03-2026)</h2>
+<h3>Wat heb ik gedaan vandaag?</h3>
+<p>Vandaag ben ik verder gegaan met het verbeteren van de styling zodat het veel meer leek op de NS huisstijl. Ik heb ook gekeken of ik alle kriteria had behaald en of er nog iets was dat ik kon verbeteren. Uiteindelijk had ik nog gekeken of ik de responsiveness wat beter kon maken en ik heb veel gespeeld met de clamp en gap van verschillende fieldsets.</p>
+<h3>Hoelang heb ik er aan gewerkt?</h3>
+<p>Ik ben de hele dag bezig geweest met het verbeteren van de styling en vervolgens de laaste checkout gehad. </p>
+<h3>Wat heb ik geleerd?</h3>
+<p>Ik heb niet echt wat geleerd vandaag. Het waren meer final touches toepassen en de opdracht afronden. </p>
+<h3>Bronnen</h3>
+
 
