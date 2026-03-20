@@ -157,15 +157,15 @@ const countries = [
 
 // datalist vullen
 const datalist = document.getElementById("countries");
-countries.forEach((c) => {
+countries.forEach((country) => {
   const option = document.createElement("option");
-  option.value = c.code;
-  option.textContent = c.name;
+  option.value = country.code;
+  option.textContent = country.name;
   datalist.appendChild(option);
 });
 
 // mapping maken
-const map = Object.fromEntries(countries.map((c) => [c.name, c.code]));
+const map = Object.fromEntries(countries.map((country) => [country.name, country.code]));
 
 const input = document.getElementById("countryInput");
 
@@ -175,3 +175,5 @@ input.addEventListener("change", function () {
      input.value = map[input.value];
   }
 });
+
+// Hulp van ChatGPT (Prompt:"Ik heb een datalist element in mijn website. Is het mogelijk dat mijn value veranderd kan worden naar iets anders zonder de hulp van javascript. Dus bijvoorbeeld als ik een datalist hebt met id: countries en dat de values landen zijn bijvoorbeeld nederland belgie etc, dat als ik Nederland invul dat het veranderd naar "NLD".")

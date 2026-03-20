@@ -176,7 +176,11 @@ button {
   font-weight: normal;
   border: none;
   border-radius: 3px;
+}
 
+button:hover {
+   background-color:#003082;
+   transition: ease-in .1s ;
 }
 
 /* PATTERN 1 */
