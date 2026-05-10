@@ -16,39 +16,51 @@
 
         <h1>Aangifte 2025 Erfbelasting </h1>
 
+            <div class="theme-toggle">
+  <label class="switch">
+    <input type="checkbox" name="theme">
+    <span class="slider"></span>
+  </label>
+  <span class="theme-label">Dark mode</span>
+</div>
+
     </header>
 
     <main>
 
 
 
-        <form>
+        <form novalidate>
 
             <!-- VRAAG 1 -->
 
-            <fieldset>
+            <fieldset  class="vraag1">
                 <!-- Vraag 1A -->
                 <legend class="firstlegend">1. Gegevens van de overledene</legend>
 
                 <fieldset>
                     <legend class="secondlegend">Vul hier de gegevens in van de overledene.</legend>
 
-
                     <label for="initial-deceased">Voorletter(s): </label>
-                    <input type="text" name="initial-deceased" id="initial-deceased" required>
+                    <input type="text" name="initial-deceased" id="initial-deceased" class="input-small" required >
+                    <span class="field-error" id="initial-deceased-error"></span>
 
                     <label for="infix-deceased">Tussen-voegsel(s): </label>
-                    <input type="text" name="infix-deceased" id="infix-deceased">
+                    <input type="text" name="infix-deceased" id="infix-deceased" class="input-small">
 
                     <label for="lname-deceased">Achternaam: </label>
-                    <input type="text" name="lname-deceased" id="lname-deceased" required>
+                    <input type="text" name="lname-deceased" id="lname-deceased" class="input-medium" required>
+                    <span class="field-error" id="lname-deceased-error"></span>
 
                     <label for="bsn-deceased">Bsn overledene: </label>
-                    <input type="text" name="bsn-deceased" id="bsn-deceased" min="10" max="100000000" required>
+                    <input type="text" name="bsn-deceased" id="bsn-deceased"
+                        pattern="^\d{9}$" maxlength="9" inputmode="numeric" class="input-medium"required>
+                    <span class="field-error" id="bsn-deceased-error"></span>
 
                     <label for="date-of-death-deceased">Overlijdensdatum: </label>
                     <input type="date" name="date-of-death-deceased" id="date-of-death-deceased" value="2025-01-01"
-                        min="2025-01-01" max="2025-03-10" required>
+                        min="2025-01-01" max="2025-03-10" class="input-medium" required>
+                    <span class="field-error" id="date-of-death-deceased-error"></span>
                 </fieldset>
                 <!-- Vraag 1A -->
 
@@ -94,11 +106,11 @@
                     </legend>
 
                     <label>
-                        <input type="file" name="send-file" id="send-file" required>
+                        <input type="file" name="send-file" id="send-file" accept=".pdf,.jpg,.png">
                     </label>
+                    <span class="field-error" id="send-file-error"></span>
+                    <span class="field-hint">Toegestane bestanden: PDF, JPG, PNG. Max. 10 MB.</span>
                 </fieldset>
-
-
 
                 <fieldset class="open2">
                     <legend class="secondlegend">
@@ -116,11 +128,11 @@
                     </label>
                 </fieldset>
 
-
                 <fieldset class="open2">
-                    <legend class="secondlegend">Vul hier de gegevens in van de overledene.</legend>
+                    <legend class="secondlegend">Datum huwelijkse of partnerschapsvoorwaarden.</legend>
                     <label for="date-of-married">Datum huwelijkse of partnerschapsvoorwaarden: </label>
-                    <input type="date" name="date-of-married" id="date-of-married" required>
+                    <input type="date" name="date-of-married" id="date-of-married">
+                    <span class="field-error" id="date-of-married-error"></span>
                 </fieldset>
 
                 <!-- Vraag 1B -->
@@ -160,29 +172,36 @@
 
                 <fieldset class="open5">
                     <legend class="secondlegend">Vul hier de gegevens in van de notaris die het testament heeft
-                        opgemaakt en de
-                        datum van het testament.</legend>
+                        opgemaakt en de datum van het testament.</legend>
+
                     <label for="notary-number">Protocolnummer notaris:
-                        <input type="number" name="notary-number" id="notary-number" required></label>
+                        <input type="number" name="notary-number" id="notary-number" min="1" class="input-medium"></label>
+                    <span class="field-error" id="notary-number-error"></span>
 
                     <label for="initial-notary">Voorletter(s):
-                        <input type="text" name="initial-notary" id="initial-notary" required> </label>
+                        <input type="text" name="initial-notary" id="initial-notary"
+                            pattern="^([A-Za-z]\.?)+" class="input-small" required> </label>
+                    <span class="field-error" id="initial-notary-error"></span>
 
                     <label for="infix-notary">Tussen-voegsel(s):
-                        <input type="text" name="infix-notary" id="infix-notary" required></label>
+                        <input type="text" name="infix-notary" id="infix-notary" class="input-small"></label>
 
                     <label for="lname-notary">Achternaam:
-                        <input type="text" name="lname-notary" id="lname-notary" required></label>
+                        <input type="text" name="lname-notary" id="lname-notary" class="input-medium" required></label>
+                    <span class="field-error" id="lname-notary-error"></span>
 
                     <label for="office">Vestigingsplaats:
-                        <input type="text" name="office" id="office" required> </label>
+                        <input type="text" name="office" id="office" class="input-medium"> </label>
 
                     <label for="date-of-will">Datum van het testament of
                         van de laatste wijziging:
-                        <input type="date" name="date-of-will" id="date-of-will" required></label>
+                        <input type="date" name="date-of-will" id="date-of-will" class="input-medium" required></label>
+                    <span class="field-error" id="date-of-will-error"></span>
 
-                    <label for="bsn-deceased-2">Bsn overledene:
-                        <input type="text" name="bsn-deceased-2" id="bsn-deceased-2" required> </label>
+                    <label for="bsn-deceased-2">Bsn overledene (bevestiging):
+                        <input type="text" name="bsn-deceased-2" id="bsn-deceased-2"
+                            pattern="^\d{9}$" maxlength="9" inputmode="numeric" class="input-medium" required> </label>
+                    <span class="field-error" id="bsn-deceased-2-error"></span>
 
                 </fieldset>
 
@@ -197,14 +216,9 @@
             <!-- VRAAG 2 -->
 
             <!-- Vraag 2A -->
-            <fieldset>
+            <fieldset class="vraag2">
                 <legend class="firstlegend">
                     2. Gegevens van de gemachtigde.
-
-                    <!-- De gemachtigde is degene die namens 1 of meerdere
-                    personen en/of instellingen aangifte doet. Het invullen van een telefoonnummer of e-mailadres is
-                    niet
-                    verplicht, maar wel handig. Dan kunnen wij u makkelijker vragen stellen of uitleg geven. -->
                 </legend>
 
                 <fieldset>
@@ -227,18 +241,22 @@
                     </label>
 
                     <label class="open6" for="bsn-representative">Bsn/RSIN gemachtigde:
-                        <input type="text" name="bsn-representative" id="bsn-representative"></label>
+                        <input type="text" name="bsn-representative" id="bsn-representative"
+                            pattern="^\d{9}$" maxlength="9" inputmode="numeric" class="input-medium" ></label>
+                    <span class="field-error open6" id="bsn-representative-error"></span>
 
                     <label class="open7" for="becon-number-advisor">Beconnummer adviseur:
-                        <input type="text" name="becon-number-advisor" id="becon-number-advisor"></label>
+                        <input type="text" name="becon-number-advisor" id="becon-number-advisor"
+                            pattern="^\d{5,6}$" inputmode="numeric" class="input-medium" ></label>
+                    <span class="field-error open7" id="becon-number-advisor-error"></span>
 
                     <label class="open8" for="notary-number-2">Protocolnummer notaris:
-                        <input type="text" name="notary-number-2" id="notary-number-2"></label>
+                        <input type="text" name="notary-number-2" id="notary-number-2"
+                            inputmode="numeric" class="input-medium" > </label>
+                    <span class="field-error open8" id="notary-number-2-error"></span>
 
                 </fieldset>
 
-
-                <!-- Vraag 2A -->
 
                 <!-- Vraag 2B -->
 
@@ -248,63 +266,71 @@
                     </legend>
 
                     <label for="initial-representative">Voorletter(s) gemachtigde: </label>
-                    <input type="text" name="initial-representative" id="initial-representative" required>
+                    <input type="text" name="initial-representative" id="initial-representative"
+                        pattern="^([A-Za-z]\.?)+"  class="input-small" required>
+                    <span class="field-error" id="initial-representative-error"></span>
 
                     <label for="infix-representative">Tussen-voegsel(s) gemachtigde: </label>
-                    <input type="text" name="infix-representative" id="infix-representative">
+                    <input type="text" name="infix-representative" id="infix-representative" class="input-small">
 
                     <label for="lname-representative">Achternaam gemachtigde: </label>
-                    <input type="text" name="lname-representative" id="lname-representative" required>
+                    <input type="text" name="lname-representative" id="lname-representative" minlength="2" class="input-medium" required>
+                    <span class="field-error" id="lname-representative-error"></span>
 
                 </fieldset>
 
                 <fieldset>
                     <legend class="secondlegend">Adres in Nederland:</legend>
                     <label for="street-name-nl">Straat: </label>
-                    <input type="text" name="street-name-nl" id="street-name-nl" required>
+                    <input type="text" name="street-name-nl" id="street-name-nl" class="input-medium" required>
+                    <span class="field-error" id="street-name-nl-error"></span>
 
                     <label for="housenumber-nl">Huisnummer: </label>
-                    <input type="number" name="housenumber-nl" id="housenumber-nl" required>
+                    <input type="number" name="housenumber-nl" id="housenumber-nl" min="1" class="input-small" required>
+                    <span class="field-error" id="housenumber-nl-error"></span>
 
                     <label for="suffix-nl">toevoeging: </label>
-                    <input type="text" name="suffix-nl" id="suffix-nl" required>
+                    <input type="text" name="suffix-nl" id="suffix-nl" class="input-small">
 
                     <label for="zipcode-nl">Postcode: </label>
-                    <input type="text" name="zipcode-nl" id="zipcode-nl" required>
+                    <input type="text" name="zipcode-nl" id="zipcode-nl"
+                        pattern="^\d{4}\s?[A-Za-z]{2}$" class="input-small" required>
+                    <span class="field-error" id="zipcode-nl-error"></span>
 
                     <label for="city-nl">Woonplaats: </label>
-                    <input type="text" name="city-nl" id="city-nl" required>
+                    <input type="text" name="city-nl" id="city-nl" class="input-medium" required>
+                    <span class="field-error" id="city-nl-error"></span>
                 </fieldset>
 
                 <fieldset>
                     <legend class="secondlegend">Adres in buitenland:</legend>
                     <label for="street-name-abroad">Straat: </label>
-                    <input type="text" name="street-name-abroad" id="street-name-abroad" required>
+                    <input type="text" name="street-name-abroad" id="street-name-abroad" class="input-medium" required>
 
                     <label for="housenumber-abroad">Huisnummer: </label>
-                    <input type="number" name="housenumber-abroad" id="housenumber-abroad" required>
+                    <input type="number" name="housenumber-abroad" id="housenumber-abroad" min="1" class="input-small" required>
 
-                    <label for="housenumber-abroad">Toevoeging: </label>
-                    <input type="text" name="addition-abroad" id="addition-abroad" required>
+                    <label for="addition-abroad">Toevoeging: </label>
+                    <input type="text" name="addition-abroad" id="addition-abroad" class="input-small">
 
                     <label for="zipcode-abroad">Postcode: </label>
-                    <input type="text" name="zipcode-abroad" id="zipcode-abroad" required>
+                    <input type="text" name="zipcode-abroad" id="zipcode-abroad" class="input-small" required>
 
                     <label for="city-abroad">Plaats: </label>
-                    <input type="text" name="city-abroad" id="city-abroad" required>
-
+                    <input type="text" name="city-abroad" id="city-abroad" class="input-medium" required>
 
                     <label for="countryInput">Land: </label>
-                    <input list="countries" id="countryInput">
-                    <input type="hidden" name="country" id="countryCode" required>
+                    <input list="countries" id="countryInput" required>
+                    <input type="hidden" name="country" id="countryCode">
                     <datalist id="countries"></datalist>
 
                     <label for="phonenumber">Telefoonnummer: </label>
-                    <input type="tel" name="phonenumber" id="phonenumber" min="10" max="99999999999" required>
+                    <input type="tel" name="phonenumber" id="phonenumber" class="input-medium" required>
+                    <span class="field-error" id="phonenumber-error"></span>
 
                     <label for="email">E-mailadres: </label>
-                    <input type="email" name="email" id="email" required>
-
+                    <input type="email" name="email" id="email" class="input-medium" required>
+                    <span class="field-error" id="email-error"></span>
 
                 </fieldset>
 
@@ -315,7 +341,7 @@
 
             <!-- ENDE VRAAG 2 -->
 
-            <button>Verzend</button>
+            <button type="submit">Verzend</button>
 
         </form>
     </main>

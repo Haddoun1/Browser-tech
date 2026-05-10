@@ -1,17 +1,68 @@
-
 :root {
   --primaire-color: #003082;
+  --primaire-legend-color: #003082;
   --secundaire-color: #FFC917;
   --tertiaire-color: #f4f6f8;
   --border-color: #dadada;
   --primaire-text-color: #1a1a1a;
-  --secundaire-text-color: rgb(0, 99, 212);
+  --secundaire-text-color: #0063d4;
+  --fieldset-bg: #ffffff;
   --bg: #E6E6E9;
+  --error-color: #c0392b;
+  --success-color: #1a7a3c;
+  --hint-color: #4f5d75;
+  --marquee-bg: white;
+  --marquee-text: red;
+  --marquee-border: black;
+  --header-bg: #FFC917;
+  --header-text: #003082;
+  --input-bg: #ffffff;
+  --input-border: #dadada;
+  --radio-bg: #ffffff;
+  --radio-border: #dadada;
+  --radio-selected-bg: #ffc91726;
+  --radio-hover-bg: rgba(0, 48, 130, .05);
+  
+}
+
+/* DARK MODE TRIGGER */
+body:has(.switch input:checked) {
+  --fieldset-bg: #121212;
+  --bg: #343536;
+  --border-color: #343536;
+  --primaire-text-color: #f5f5f5;
+  --secundaire-text-color: #9cc3ff;
+  --border-color: #333;
+
+  --marquee-bg: #1e1e1e;
+  --marquee-text: #ff4d4d;
+  --marquee-border: #555;
+
+  --header-bg: #1e1e1e;
+  --header-text: #FFC917;
+
+  --input-bg: #2a2a2a;
+  --input-border: #444;
+
+  --radio-bg: #1e1e1e;
+--radio-border: #333;
+--radio-hover-bg: rgba(255, 255, 255, .05);
+--radio-selected-bg: rgba(255, 201, 23, .12);
+
+--primaire-legend-color: white;
+}
+
+.open1, .open2, .open3, .open4, .open5 {
+  transition: all .2s ease;
 }
 
 * {
   box-sizing: border-box;
   font-family: Arial, Helvetica, sans-serif;
+}
+
+html, body {
+  overflow-x: hidden;
 }
 
 body {
@@ -26,15 +77,15 @@ header {
   display: grid;
   grid-template-columns: 1fr auto auto;
   align-items: center;
-  background-color: var(--secundaire-color);
-  color: var(--primaire-color);
+  background-color: var(--header-bg);
+  color: var(--header-text);
 }
 
 header marquee {
-  color: red;
-  background-color: white;
-  border-top: 3px solid black;
-  border-bottom: 3px solid black;
+  color: var(--marquee-text);
+  background-color: var(--marquee-bg);
+  border-top: 3px solid var(--marquee-border);
+  border-bottom: 3px solid var(--marquee-border);
   font-weight: bold;
   text-transform: uppercase;
   margin-top: 1rem;
@@ -50,7 +101,6 @@ header h1 {
   margin-bottom: 2rem;
 }
 
-
 /* MAIN */
 
 main {
@@ -62,26 +112,148 @@ main {
 /* FIELDSETS */
 
 fieldset {
-  gap: 1rem;
   display: grid;
-  grid-template-columns: auto;
-  margin-bottom: 2rem;
-  border: 3px solid white;
-  background-color: white;
+  grid-template-columns: minmax(10rem, 1fr) 2fr;
+  align-items: start;
+  gap: .5rem 1rem;
+  margin: 0 auto 2rem auto;
+  width: min(900px, 100%);
+  background-color: var(--fieldset-bg);
+  border: 2px solid var(--border-color);
+  border-radius: 5px;
   box-shadow: 0 .125rem 0 0 rgba(7, 7, 33, .15);
+  padding: 1rem 1.25rem 1.25rem;
 }
 
+/* Nested fieldsets inherit the same grid columns */
 fieldset fieldset {
   border: none;
+  padding: 0;
+  box-shadow: none;
+  grid-column: 1 / -1;
+}
+
+/* legend, p, and .field-error always span both columns */
+legend,
+p,
+.field-error,
+.field-hint {
+  grid-column: 1 / -1;
+}
+
+/* Labels */
+label {
+  grid-column: 1;
+  align-self: center;
+  font-size: .9rem;
+  color: var(--secundaire-text-color);
+}
+
+/* Inputs */
+input[type="text"],
+input[type="number"],
+input[type="date"],
+input[type="email"],
+input[type="tel"],
+input[list],
+input[type="file"] {
+  grid-column: 2;
+  width: 100%;
+  padding: .7rem;
+  margin-top: .3rem;
+  border: 2px solid var(--input-border);
+  border-radius: 6px;
+  font-size: 1rem;
+  background-color: var(--input-bg);
+  color: var(--primaire-text-color);
+}
+
+label:has(input[type="text"]),
+label:has(input[type="number"]),
+label:has(input[type="date"]),
+label:has(input[type="email"]),
+label:has(input[type="tel"]),
+label:has(input[list]) {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: minmax(12rem, 1fr) 2fr;
+}
+
+label:has(input) input {
+  grid-column: 2;
+  width: 100%;
+}
+
+/* RADIO BUTTONS */
+
+input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Radio card */
+
+label:has(input[type="radio"]) {
+  grid-column: 1 / -1;
+
+  display: block;
+  width: 100%;
+
+  margin-top: .6rem;
+  padding: .9rem 1rem;
+
+  border: 2px solid var(--radio-border);
+  border-radius: 10px;
+
+  background-color: var(--radio-bg);
+  color: var(--primaire-text-color);
+
+  font-weight: 600;
+  cursor: pointer;
+
+  transition:
+    background-color .2s ease,
+    border-color .2s ease,
+    box-shadow .2s ease,
+    transform .12s ease;
+}
+
+/* Hover */
+
+label:has(input[type="radio"]):hover {
+  border-color: var(--secundaire-text-color);
+  background-color: var(--radio-hover-bg);
+}
+
+/* Focus accessibility */
+
+label:has(input[type="radio"]:focus-visible) {
+  outline: 3px solid rgba(255, 201, 23, .45);
+  outline-offset: 2px;
+}
+
+/* Checked state */
+
+label:has(input[type="radio"]:checked) {
+  background-color: var(--radio-selected-bg);
+  border-color: var(--secundaire-text-color);
+  color: var(--primaire-text-color);
+
+  box-shadow: 0 0 0 3px rgba(255, 201, 23, .2);
+}
+
+/* Click effect */
+
+label:has(input[type="radio"]):active {
+  transform: scale(.99);
 }
 
 /* LEGEND */
 
-/* Hulp van Romy */
-
 legend {
   font-weight: bold;
-  color: var(--primaire-color);
+  color: var(--primaire-legend-color);
   font-size: 1.1rem;
   margin-bottom: .5rem;
 }
@@ -95,70 +267,30 @@ legend {
   font-size: 1rem;
 }
 
-/* p */
+/* TEXT */
 
 p {
   color: var(--secundaire-text-color);
 }
 
-/* LABELS */
+/* INPUT SIZES */
 
-label {
-  margin-top: .8rem;
-  font-size: .9rem;
-  color: var(--secundaire-text-color);
+.input-small {
+  max-width: 6rem;
 }
 
-/* INPUTS STYLING */
+.input-medium {
+  max-width: 12rem;
+}
 
-input[type="text"],
-input[type="number"],
-input[type="date"],
-input[type="email"],
-input[type="tel"],
-input[list] {
-  width: 100%;
-  padding: .7rem;
-  margin-top: .3rem;
-  border: 2px solid var(--border-color);
-  border-radius: 6px;
-  font-size: 1rem;
-  transition: all .2s ease;
+.input-large {
+  max-width: 20rem;
 }
 
 input:focus {
   outline: none;
-  border-color: var(--secundaire-color);
-  box-shadow: 0 0 0 3px rgba(255, 201, 23, .35);
-}
-
-/* RADIO BUTTONS */
-
-input[type="radio"] {
-  display: none;
-}
-
-label:has(input[type="radio"]) {
-  display: block;
-  margin-top: .6rem;
-  padding: .7rem 1rem;
-  border-radius: 8px;
-  border: 2px solid var(--primaire-color);
-  background: white;
-  color: var(--primaire-color);
-  font-weight: 600;
-  cursor: pointer;
-  transition: all .15s ease;
-}
-
-label:has(input[type="radio"]):hover {
-  background: rgba(0, 48, 130, .05);
-}
-
-label:has(input[type="radio"]:checked) {
-  background: var(--primaire-color);
-  color: white;
-  border-color: var(--primaire-color);
+  border-color: var(--secundaire-text-color);
+  box-shadow: 0 0 0 3px rgba(255, 201, 23, .25);
 }
 
 /* BUTTON */
@@ -168,22 +300,75 @@ button {
   color: white;
   margin-top: 1rem;
   margin-bottom: 3rem;
-  padding-top: 0.8rem;
-  padding-left: 3rem;
-  padding-right: 3rem;
-  padding-bottom: 0.8rem;
+  padding: 0.8rem 3rem;
   font-size: 1rem;
   font-weight: normal;
   border: none;
   border-radius: 3px;
+  cursor: pointer;
 }
 
 button:hover {
-   background-color:#003082;
-   transition: ease-in .1s ;
+  background-color: #003082;
+  transition: ease-in .1s;
 }
 
-/* PATTERN 1 */
+/* THEME TOGGLE */
+
+.theme-toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  margin-left: auto;
+  margin-right: 2rem;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 26px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: .3s;
+  border-radius: 34px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 20px;
+  width: 20px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  transition: .3s;
+  border-radius: 50%;
+}
+
+.switch input:checked + .slider {
+  background-color: var(--primaire-color);
+}
+
+.switch input:checked + .slider:before {
+  transform: translateX(24px);
+}
+
+/* CONDITIONAL SECTIONS */
 
 .open1,
 .open2,
@@ -197,49 +382,142 @@ button:hover {
 }
 
 form:has(#deceased-married-yes:checked) .open1 {
-  display: block;
-  transition: all 0.25s;
+  display: grid;
 }
 
 form:has(#deceased-married-act-yes:checked) .open2 {
-  display: block;
+  display: grid;
 }
 
 form:has(#kids-yes:checked) .open3 {
-  display: block;
+  display: grid;
 }
 
 form:has(#kid-deceased-yes:checked) .open4 {
-  display: block;
+  display: grid;
 }
 
 form:has(#will-deceased-yes:checked) .open5 {
-  display: block;
+  display: grid;
 }
 
 form:has(#bsn-option:checked) .open6 {
-  display: block;
+  display: grid;
+  grid-template-columns: minmax(12rem, 1fr) 2fr;
+  align-items: center;
+  gap: .5rem 1rem;
 }
 
 form:has(#becon-option:checked) .open7 {
-  display: block;
+   display: grid;
+  grid-template-columns: minmax(12rem, 1fr) 2fr;
+  align-items: center;
+  gap: .5rem 1rem;
 }
 
 form:has(#notary-option:checked) .open8 {
+  display: grid;
+  grid-template-columns: minmax(12rem, 1fr) 2fr;
+  align-items: center;
+  gap: .5rem 1rem;
+}
+
+/* VALIDATION */
+
+input:user-invalid {
+  border-color: var(--error-color);
+  background-color: rgba(192, 57, 43, 0.07);
+}
+
+input:user-valid:not([type="file"]):not([type="radio"]) {
+  border-color: var(--success-color);
+  background-color: rgba(26, 122, 60, 0.07);
+}
+
+/* ERROR + HINTS */
+
+.field-error {
+  display: block;
+  font-size: .8rem;
+  color: var(--error-color);
+  font-weight: 600;
+  min-height: 1.2em;
+  margin-top: .25rem;
+}
+
+.field-hint {
+  display: block;
+  font-size: .78rem;
+  color: var(--hint-color);
+  margin-top: -.5rem;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 640px) {
+  fieldset {
+    grid-template-columns: 1fr;
+  }
+
+  label:has(input) {
+    grid-template-columns: 1fr;
+  }
+
+  label:has(input) input,
+  input[type="text"],
+  input[type="number"],
+  input[type="date"],
+  input[type="email"],
+  input[type="tel"],
+  input[list] {
+    grid-column: 1;
+  }
+}
+
+.vraag2 {
+  display: none;
+}
+
+form:has(
+  #initial-deceased:user-valid
+):has(
+  #lname-deceased:user-valid
+):has(
+  #bsn-deceased:user-valid
+):has(
+  #date-of-death-deceased:user-valid
+) .vraag2 {
   display: block;
 }
 
-
-/* VALIDATIE */
-
-input:user-invalid {
-  border-color: red;
-  color: red;
-  background-color: rgba(255, 0, 0, 0.2);
+button[type="submit"] {
+  display: none;
 }
 
-input:user-valid {
-  border-color: rgb(0, 255, 60);
-  background-color: rgba(0, 255, 38, 0.2);
+form:has(
+  #initial-deceased:user-valid
+):has(
+  #lname-deceased:user-valid
+):has(
+  #bsn-deceased:user-valid
+):has(
+  #date-of-death-deceased:user-valid
+):has(
+  input[name="kids"]:checked
+):has(
+  input[name="will-deceased"]:checked
+):has(
+  input[name="deceased-married"]:checked
+):has(
+  input[name="representative-type"]:checked
+):has(
+  #initial-representative:user-valid
+):has(
+  #lname-representative:user-valid
+):has(
+  #zipcode-nl:user-valid
+):has(
+  #city-nl:user-valid
+) button[type="submit"] {
+  display: block;
 }
-

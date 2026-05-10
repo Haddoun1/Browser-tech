@@ -1,6 +1,6 @@
-console.log("Bomboclat");
+"use strict";
 
-document.querySelector("input").setAttribute("required", "");
+/* ── Countries datalist ──────────────────────────────────────────────────── */
 
 const countries = [
   { code: "AFG", name: "Afghanistan" },
@@ -19,7 +19,7 @@ const countries = [
   { code: "ABW", name: "Aruba" },
   { code: "AUS", name: "Australië" },
   { code: "AZE", name: "Azerbeidzjan" },
-  { code: "BHS", name: "Bahama’s" },
+  { code: "BHS", name: "Bahama's" },
   { code: "BHR", name: "Bahrein" },
   { code: "BGD", name: "Bangladesh" },
   { code: "BRB", name: "Barbados" },
@@ -33,7 +33,6 @@ const countries = [
   { code: "BES", name: "Bonaire, St. Eustatius en Saba" },
   { code: "BIH", name: "Bosnië en Herzegovina" },
   { code: "BWA", name: "Botswana" },
-  { code: "BVT", name: "Bouveteiland" },
   { code: "BRA", name: "Brazilië" },
   { code: "VGB", name: "Britse Maagdeneilanden" },
   { code: "IOT", name: "Brits Indische Oceaanterritorium" },
@@ -155,25 +154,211 @@ const countries = [
   { code: "ZWE", name: "Zimbabwe" },
 ];
 
-// datalist vullen
+// Datalist vullen
 const datalist = document.getElementById("countries");
-countries.forEach((country) => {
+countries.forEach(({ name }) => {
   const option = document.createElement("option");
-  option.value = country.code;
-  option.textContent = country.name;
+  option.value = name;
   datalist.appendChild(option);
 });
 
-// mapping maken
-const map = Object.fromEntries(countries.map((country) => [country.name, country.code]));
+// Mapping naam → code
+const map = Object.fromEntries(countries.map(c => [c.name, c.code]));
 
-const input = document.getElementById("countryInput");
-
-// zodra gebruiker kiest → tekst vervangen
-input.addEventListener("change", function () {
-  if (map[input.value]) {
-     input.value = map[input.value];
+const countryInput = document.getElementById("countryInput");
+countryInput.addEventListener("change", function () {
+  if (map[this.value]) {
+    document.getElementById("countryCode").value = map[this.value];
   }
 });
+// Hulp van ChatGPT (Prompt:"Ik heb een datalist element in mijn website. Is het mogelijk dat mijn value veranderd kan worden naar iets anders zonder de hulp van javascript...")
 
-// Hulp van ChatGPT (Prompt:"Ik heb een datalist element in mijn website. Is het mogelijk dat mijn value veranderd kan worden naar iets anders zonder de hulp van javascript. Dus bijvoorbeeld als ik een datalist hebt met id: countries en dat de values landen zijn bijvoorbeeld nederland belgie etc, dat als ik Nederland invul dat het veranderd naar "NLD".")
+
+/* ── Custom validation messages ─────────────────────────────────────────── */
+
+// Per field-id: map from ValidityState key → Dutch error message
+const MESSAGES = {
+  "initial-deceased": {
+    valueMissing:    "Vul de voorletter(s) in.",
+    patternMismatch: "Gebruik alleen letters en punten, bijv. A. of A.B.",
+  },
+  "lname-deceased": {
+    valueMissing: "Vul de achternaam in.",
+    tooShort:     "De achternaam moet minimaal 2 tekens bevatten.",
+  },
+  "bsn-deceased": {
+    valueMissing:    "Vul het BSN in.",
+    patternMismatch: "Een BSN bestaat uit precies 9 cijfers.",
+  },
+  "date-of-death-deceased": {
+    valueMissing:   "Vul de overlijdensdatum in.",
+    rangeUnderflow: "De datum moet na 1 januari 2025 liggen.",
+    rangeOverflow:  "De datum mag niet later dan 10 maart 2025 zijn.",
+  },
+  "bsn-deceased-2": {
+    valueMissing:    "Vul het BSN ter bevestiging in.",
+    patternMismatch: "Een BSN bestaat uit precies 9 cijfers.",
+    customError:     "Het BSN komt niet overeen met het eerder ingevulde BSN.",
+  },
+  "notary-number": {
+    valueMissing:  "Vul het protocolnummer in.",
+    rangeUnderflow: "Voer een geldig protocolnummer in.",
+  },
+  "initial-notary": {
+    valueMissing:    "Vul de voorletter(s) in.",
+    patternMismatch: "Gebruik alleen letters en punten.",
+  },
+  "lname-notary": {
+    valueMissing: "Vul de achternaam van de notaris in.",
+  },
+  "office": {
+    valueMissing: "Vul de vestigingsplaats in.",
+  },
+  "date-of-will": {
+    valueMissing: "Vul de datum van het testament in.",
+  },
+  "initial-representative": {
+    valueMissing:    "Vul de voorletter(s) in.",
+    patternMismatch: "Gebruik alleen letters en punten.",
+  },
+  "lname-representative": {
+    valueMissing: "Vul de achternaam in.",
+    tooShort:     "De achternaam moet minimaal 2 tekens bevatten.",
+  },
+  "street-name-nl": {
+    valueMissing: "Vul de straatnaam in.",
+  },
+  "housenumber-nl": {
+    valueMissing:   "Vul het huisnummer in.",
+    rangeUnderflow: "Voer een geldig huisnummer in.",
+  },
+  "zipcode-nl": {
+    valueMissing:    "Vul de postcode in.",
+    patternMismatch: "Gebruik het formaat 1234 AB.",
+  },
+  "city-nl": {
+    valueMissing: "Vul de woonplaats in.",
+  },
+  "bsn-representative": {
+    valueMissing:    "Vul het BSN/RSIN in.",
+    patternMismatch: "Een BSN bestaat uit precies 9 cijfers.",
+  },
+  "becon-number-advisor": {
+    valueMissing:    "Vul het beconnummer in.",
+    patternMismatch: "Een beconnummer bestaat uit 5 of 6 cijfers.",
+  },
+  "send-file": {
+    customError: "Het bestand mag maximaal 10 MB zijn.",
+  },
+  "email": {
+    typeMismatch: "Vul een geldig e-mailadres in, bijv. naam@voorbeeld.nl.",
+  },
+  "phonenumber": {
+    typeMismatch: "Vul een geldig telefoonnummer in.",
+  },
+};
+
+/**
+ * Return the first failing ValidityState key for an input, or null if valid.
+ */
+function getValidityKey(input) {
+  const v = input.validity;
+  if (v.customError)    return "customError";
+  if (v.valueMissing)   return "valueMissing";
+  if (v.typeMismatch)   return "typeMismatch";
+  if (v.patternMismatch) return "patternMismatch";
+  if (v.tooShort)       return "tooShort";
+  if (v.rangeUnderflow) return "rangeUnderflow";
+  if (v.rangeOverflow)  return "rangeOverflow";
+  return null;
+}
+
+/**
+ * Write or clear the error message for a field.
+ * Also sets aria-invalid on the input so the re-validate-on-input branch works.
+ */
+function showError(inputId, message) {
+  const el = document.getElementById(inputId + "-error");
+  if (el) el.textContent = message || "";
+
+  const input = document.getElementById(inputId);
+  if (input) input.setAttribute("aria-invalid", message ? "true" : "false");
+}
+
+/**
+ * Run all custom checks then display the appropriate message.
+ * Returns true when the field is valid.
+ */
+function validateField(input) {
+  // 1. Custom: BSN confirmation must match bsn-deceased
+  if (input.id === "bsn-deceased-2") {
+    const original = document.getElementById("bsn-deceased").value;
+    if (input.value && input.value !== original) {
+      input.setCustomValidity("BSN komt niet overeen.");
+    } else {
+      input.setCustomValidity("");
+    }
+  }
+
+  // 2. Custom: file size max 10 MB
+  if (input.type === "file" && input.files.length > 0) {
+    const maxBytes = 10 * 1024 * 1024;
+    if (input.files[0].size > maxBytes) {
+      input.setCustomValidity("Bestand te groot.");
+    } else {
+      input.setCustomValidity("");
+    }
+  }
+
+  if (input.validity.valid) {
+    showError(input.id, "");
+    return true;
+  }
+
+  const key  = getValidityKey(input);
+  const msgs = MESSAGES[input.id];
+  const msg  = (msgs && msgs[key]) || "Dit veld is verplicht of heeft een ongeldige waarde.";
+  showError(input.id, msg);
+  return false;
+}
+
+// Attach blur + input listeners to every input
+document.querySelectorAll("input").forEach(input => {
+  // Validate when leaving the field
+  input.addEventListener("blur", () => validateField(input));
+  // Re-validate while typing once the field has been touched and was invalid
+  input.addEventListener("input", () => {
+    if (input.getAttribute("aria-invalid") === "true") validateField(input);
+  });
+});
+
+/**
+ * Returns true if the element is currently visible in the page
+ * (i.e. not hidden by a display:none ancestor).
+ */
+function isVisible(el) {
+  return el.offsetParent !== null;
+}
+
+// On submit: validate all visible required fields; scroll to first error
+document.querySelector("form").addEventListener("submit", function (e) {
+  e.preventDefault();
+  let firstInvalid = null;
+
+  this.querySelectorAll("input").forEach(input => {
+    // Skip inputs that are hidden (inside collapsed conditionals)
+    if (!isVisible(input)) return;
+
+    if (!validateField(input) && !firstInvalid) {
+      firstInvalid = input;
+    }
+  });
+
+  if (firstInvalid) {
+    firstInvalid.focus();
+    firstInvalid.scrollIntoView({ behavior: "smooth", block: "center" });
+  } else {
+    alert("Aangifte succesvol verzonden!");
+    this.reset();
+  }
+});
