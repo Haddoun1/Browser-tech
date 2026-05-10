@@ -126,4 +126,7 @@ Website voor het vak Browser tech
 <p>Ik heb niet echt wat geleerd vandaag. Het waren meer final touches toepassen en de opdracht afronden. </p>
 <h3>Bronnen</h3>
 
+<h2>herkansing</h2>
+<p>Ik ben begonnen met het maken van een light en dark mode. Vervolgens heb ik de cognitieve load vermindered voor de gebruiker dus je kan nu per stap doorgaan. Verder heb ik de validatie verbeterd en de styling aangepast.</p>
+
 
