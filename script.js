@@ -1,7 +1,3 @@
-"use strict";
-
-/* ── Countries datalist ──────────────────────────────────────────────────── */
-
 const countries = [
   { code: "AFG", name: "Afghanistan" },
   { code: "ALA", name: "Åland" },
@@ -154,7 +150,6 @@ const countries = [
   { code: "ZWE", name: "Zimbabwe" },
 ];
 
-// Datalist vullen
 const datalist = document.getElementById("countries");
 countries.forEach(({ name }) => {
   const option = document.createElement("option");
@@ -162,7 +157,7 @@ countries.forEach(({ name }) => {
   datalist.appendChild(option);
 });
 
-// Mapping naam → code
+
 const map = Object.fromEntries(countries.map(c => [c.name, c.code]));
 
 const countryInput = document.getElementById("countryInput");
@@ -173,10 +168,6 @@ countryInput.addEventListener("change", function () {
 });
 // Hulp van ChatGPT (Prompt:"Ik heb een datalist element in mijn website. Is het mogelijk dat mijn value veranderd kan worden naar iets anders zonder de hulp van javascript...")
 
-
-/* ── Custom validation messages ─────────────────────────────────────────── */
-
-// Per field-id: map from ValidityState key → Dutch error message
 const MESSAGES = {
   "initial-deceased": {
     valueMissing:    "Vul de voorletter(s) in.",
@@ -258,9 +249,6 @@ const MESSAGES = {
   },
 };
 
-/**
- * Return the first failing ValidityState key for an input, or null if valid.
- */
 function getValidityKey(input) {
   const v = input.validity;
   if (v.customError)    return "customError";
@@ -273,10 +261,6 @@ function getValidityKey(input) {
   return null;
 }
 
-/**
- * Write or clear the error message for a field.
- * Also sets aria-invalid on the input so the re-validate-on-input branch works.
- */
 function showError(inputId, message) {
   const el = document.getElementById(inputId + "-error");
   if (el) el.textContent = message || "";
@@ -285,12 +269,7 @@ function showError(inputId, message) {
   if (input) input.setAttribute("aria-invalid", message ? "true" : "false");
 }
 
-/**
- * Run all custom checks then display the appropriate message.
- * Returns true when the field is valid.
- */
 function validateField(input) {
-  // 1. Custom: BSN confirmation must match bsn-deceased
   if (input.id === "bsn-deceased-2") {
     const original = document.getElementById("bsn-deceased").value;
     if (input.value && input.value !== original) {
@@ -300,7 +279,6 @@ function validateField(input) {
     }
   }
 
-  // 2. Custom: file size max 10 MB
   if (input.type === "file" && input.files.length > 0) {
     const maxBytes = 10 * 1024 * 1024;
     if (input.files[0].size > maxBytes) {
@@ -321,32 +299,22 @@ function validateField(input) {
   showError(input.id, msg);
   return false;
 }
-
-// Attach blur + input listeners to every input
 document.querySelectorAll("input").forEach(input => {
-  // Validate when leaving the field
   input.addEventListener("blur", () => validateField(input));
-  // Re-validate while typing once the field has been touched and was invalid
   input.addEventListener("input", () => {
     if (input.getAttribute("aria-invalid") === "true") validateField(input);
   });
 });
 
-/**
- * Returns true if the element is currently visible in the page
- * (i.e. not hidden by a display:none ancestor).
- */
+
 function isVisible(el) {
   return el.offsetParent !== null;
 }
-
-// On submit: validate all visible required fields; scroll to first error
 document.querySelector("form").addEventListener("submit", function (e) {
   e.preventDefault();
   let firstInvalid = null;
 
   this.querySelectorAll("input").forEach(input => {
-    // Skip inputs that are hidden (inside collapsed conditionals)
     if (!isVisible(input)) return;
 
     if (!validateField(input) && !firstInvalid) {
