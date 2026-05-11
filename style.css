@@ -111,7 +111,6 @@ fieldset {
   padding: 1.25rem 1.5rem 1.5rem;
 }
 
-/* Nested fieldsets */
 fieldset fieldset {
   border: none;
   padding: 0;
@@ -147,10 +146,6 @@ legend {
   margin-bottom: .5rem;
 }
 
-/* ── LABEL + INPUT GRID ROWS ──
-   Each row = label (col1) + input-wrap (col2), fixed height so
-   the error span doesn't shift the next row.
-*/
 label:not(:has(input[type="radio"])):not(.switch):not(.theme-label) {
   grid-column: 1;
   align-self: start;
@@ -188,7 +183,6 @@ input[type="file"] {
   transition: border-color .15s, box-shadow .15s, background-color .15s;
 }
 
-/* ── FOCUS STATE: yellow outline ── */
 input:focus-visible {
   outline: none;
   border-color: var(--secundaire-color);
@@ -196,7 +190,6 @@ input:focus-visible {
   background-color: var(--input-bg);
 }
 
-/* ── ERROR STATE: red outline + transparent red bg ── */
 input.touched:invalid,
 input[aria-invalid="true"] {
   border-color: var(--error-color) !important;
@@ -204,14 +197,14 @@ input[aria-invalid="true"] {
   box-shadow: 0 0 0 3px rgba(192, 57, 43, .18) !important;
 }
 
-/* ── VALID STATE: green outline + transparent green bg ── */
+
 input.touched:valid:not([type="file"]):not([type="radio"]) {
   border-color: var(--success-color) !important;
   background-color: rgba(26, 122, 60, 0.06) !important;
   box-shadow: 0 0 0 3px rgba(26, 122, 60, .15) !important;
 }
 
-/* Remove default :user-invalid so we control with .touched */
+
 input:user-invalid {
   border-color: inherit;
   background-color: inherit;
@@ -222,7 +215,7 @@ input:user-valid:not([type="file"]):not([type="radio"]) {
   background-color: inherit;
 }
 
-/* INPUT SIZE HELPERS */
+
 .input-small {
   max-width: 7rem;
 }
@@ -280,7 +273,6 @@ label:has(input[type="radio"]):active {
   transform: scale(.99);
 }
 
-/* ── ERROR + HINT SPANS ── */
 .field-error {
   display: block;
   font-size: .78rem;
@@ -299,12 +291,11 @@ label:has(input[type="radio"]):active {
   line-height: 1.3;
 }
 
-/* Radio group errors */
 fieldset>.field-error {
   margin-top: .3rem;
 }
 
-/* ── CONDITIONAL SECTIONS ── */
+
 .open1,
 .open2,
 .open3,
@@ -356,7 +347,7 @@ form:has(#notary-option:checked) .open8 {
   display: contents;
 }
 
-/* When open6/7/8 label is shown via display:contents it needs styling */
+
 label.open6,
 label.open7,
 label.open8 {
@@ -374,7 +365,7 @@ div.input-wrap.open8 {
   grid-column: 2;
 }
 
-/* ── VRAAG 2 VISIBILITY ── */
+
 .vraag2 {
   display: none;
 }
@@ -383,7 +374,6 @@ div.input-wrap.open8 {
   display: grid;
 }
 
-/* ── CONTINUE BUTTON ── */
 .continue-wrap {
   display: none;
   width: min(860px, 100%);
@@ -411,7 +401,7 @@ div.input-wrap.open8 {
   background-color: var(--primaire-color);
 }
 
-/* ── SUBMIT BUTTON ── */
+
 .submit-wrap {
   display: none;
   width: min(860px, 100%);
@@ -439,7 +429,7 @@ button[type="submit"]:hover {
   background-color: var(--primaire-color);
 }
 
-/* ── THEME TOGGLE ── */
+
 .theme-toggle {
   display: flex;
   align-items: center;
@@ -490,7 +480,6 @@ button[type="submit"]:hover {
   transform: translateX(24px);
 }
 
-/* ── COUNTRY INPUT ROW ── */
 .country-input-row {
   display: flex;
   gap: .5rem;
@@ -525,7 +514,6 @@ button[type="submit"]:hover {
   color: #fff;
 }
 
-/* Tooltip */
 .country-wrap {
   position: relative;
 }
@@ -572,7 +560,6 @@ button[type="submit"]:hover {
   min-height: 1.4em;
 }
 
-/* ── p tags (in fieldsets) ── */
 p {
   color: var(--secundaire-text-color);
   margin: 0 0 .5rem 0;
