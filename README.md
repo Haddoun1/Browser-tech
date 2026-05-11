@@ -127,6 +127,21 @@ Website voor het vak Browser tech
 <h3>Bronnen</h3>
 
 <h2>herkansing</h2>
+<p>BT feedback:
+
+- 1 of meer custom validaties
+- custom error messages 
+- kijken naar datum validiteit 
+- consistent blijven met elemneten in de formulier
+- input labels naast elkaar zetten maak het ook korter
+- probeer logisch te blijven in de formulier 
+- formulier ziet er lang uit
+- neem de gebruiker mee in het process
+- cognitive load is erg hoog
+- kijken naar verschillende manieren om informatie te vertonen bijv drie opties
+- hou de readme nogsteeds bij 
+- bronnen ook in de readme zetten voor de duidelijkheid 
+</p>
 <p>Ik ben begonnen met het maken van een light en dark mode. Vervolgens heb ik de cognitieve load vermindered voor de gebruiker dus je kan nu per stap doorgaan. Verder heb ik de validatie verbeterd en de styling aangepast.</p>
 
 

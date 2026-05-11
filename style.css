@@ -17,43 +17,36 @@
   --header-bg: #FFC917;
   --header-text: #003082;
   --input-bg: #ffffff;
-  --input-border: #dadada;
+  --input-border: #b0b8c8;
   --radio-bg: #ffffff;
-  --radio-border: #dadada;
+  --radio-border: #b0b8c8;
   --radio-selected-bg: #ffc91726;
   --radio-hover-bg: rgba(0, 48, 130, .05);
-  
+  --focus-outline: #FFC917;
+  --label-color: #003082;
+  --row-height: 2.8rem;
 }
 
-/* DARK MODE TRIGGER */
+/* DARK MODE */
 body:has(.switch input:checked) {
   --fieldset-bg: #121212;
   --bg: #343536;
   --border-color: #343536;
   --primaire-text-color: #f5f5f5;
   --secundaire-text-color: #9cc3ff;
-  --border-color: #333;
-
+  --input-bg: #2a2a2a;
+  --input-border: #555;
+  --radio-bg: #1e1e1e;
+  --radio-border: #333;
+  --radio-hover-bg: rgba(255,255,255,.05);
+  --radio-selected-bg: rgba(255,201,23,.12);
+  --primaire-legend-color: #FFC917;
+  --label-color: #9cc3ff;
   --marquee-bg: #1e1e1e;
   --marquee-text: #ff4d4d;
   --marquee-border: #555;
-
   --header-bg: #1e1e1e;
   --header-text: #FFC917;
-
-  --input-bg: #2a2a2a;
-  --input-border: #444;
-
-  --radio-bg: #1e1e1e;
---radio-border: #333;
---radio-hover-bg: rgba(255, 255, 255, .05);
---radio-selected-bg: rgba(255, 201, 23, .12);
-
---primaire-legend-color: white;
-}
-
-.open1, .open2, .open3, .open4, .open5 {
-  transition: all .2s ease;
 }
 
 * {
@@ -71,8 +64,7 @@ body {
   color: var(--primaire-text-color);
 }
 
-/* HEADER */
-
+/* ── HEADER ── */
 header {
   display: grid;
   grid-template-columns: 1fr auto auto;
@@ -95,45 +87,40 @@ header marquee {
 header h1 {
   font-size: clamp(1.1rem, 2vw, 2rem);
   font-weight: 600;
-  margin-left: clamp(4.5rem, 18vw, 17rem);
-  margin-right: clamp(4.5rem, 18vw, 17rem);
-  margin-top: 2rem;
-  margin-bottom: 2rem;
+  margin: 1.5rem clamp(2rem, 6vw, 5rem);
 }
 
-/* MAIN */
-
+/* ── MAIN ── */
 main {
-  padding-left: clamp(2rem, 12vw, 12rem);
-  padding-right: clamp(2rem, 12vw, 12rem);
-  padding-top: 2rem;
+  padding: 2rem clamp(1rem, 8vw, 8rem);
 }
 
-/* FIELDSETS */
-
+/* ── FIELDSETS ── */
 fieldset {
   display: grid;
-  grid-template-columns: minmax(10rem, 1fr) 2fr;
+  grid-template-columns: minmax(12rem, 1.2fr) 2fr;
   align-items: start;
-  gap: .5rem 1rem;
-  margin: 0 auto 2rem auto;
-  width: min(900px, 100%);
+  gap: 0 1rem;
+  margin: 0 auto 1.5rem auto;
+  width: min(860px, 100%);
   background-color: var(--fieldset-bg);
   border: 2px solid var(--border-color);
-  border-radius: 5px;
-  box-shadow: 0 .125rem 0 0 rgba(7, 7, 33, .15);
-  padding: 1rem 1.25rem 1.25rem;
+  border-radius: 6px;
+  box-shadow: 0 2px 0 rgba(7,7,33,.12);
+  padding: 1.25rem 1.5rem 1.5rem;
 }
 
-/* Nested fieldsets inherit the same grid columns */
+/* Nested fieldsets */
 fieldset fieldset {
   border: none;
   padding: 0;
   box-shadow: none;
   grid-column: 1 / -1;
+  margin-bottom: 0;
+  gap: 0 1rem;
 }
 
-/* legend, p, and .field-error always span both columns */
+/* ── LEGEND ── */
 legend,
 p,
 .field-error,
@@ -141,15 +128,48 @@ p,
   grid-column: 1 / -1;
 }
 
-/* Labels */
-label {
-  grid-column: 1;
-  align-self: center;
-  font-size: .9rem;
-  color: var(--secundaire-text-color);
+legend {
+  font-weight: bold;
+  color: var(--primaire-legend-color);
+  font-size: 1.05rem;
+  margin-bottom: .75rem;
 }
 
-/* Inputs */
+.firstlegend {
+  float: left;
+  font-size: 1.15rem;
+  padding-top: .5rem;
+}
+
+.secondlegend {
+  font-size: .95rem;
+  margin-bottom: .5rem;
+}
+
+/* ── LABEL + INPUT GRID ROWS ──
+   Each row = label (col1) + input-wrap (col2), fixed height so
+   the error span doesn't shift the next row.
+*/
+label:not(:has(input[type="radio"])):not(.switch):not(.theme-label) {
+  grid-column: 1;
+  align-self: start;
+  padding-top: .75rem;
+  font-size: .9rem;
+  font-weight: 600;
+  color: var(--label-color);
+  min-height: var(--row-height);
+}
+
+.input-wrap {
+  grid-column: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  padding-top: .3rem;
+  min-height: var(--row-height);
+}
+
+/* ── INPUTS ── */
 input[type="text"],
 input[type="number"],
 input[type="date"],
@@ -157,168 +177,232 @@ input[type="email"],
 input[type="tel"],
 input[list],
 input[type="file"] {
-  grid-column: 2;
   width: 100%;
-  padding: .7rem;
-  margin-top: .3rem;
+  padding: .55rem .75rem;
   border: 2px solid var(--input-border);
-  border-radius: 6px;
-  font-size: 1rem;
+  border-radius: 5px;
+  font-size: .95rem;
   background-color: var(--input-bg);
   color: var(--primaire-text-color);
+  transition: border-color .15s, box-shadow .15s, background-color .15s;
 }
 
-label:has(input[type="text"]),
-label:has(input[type="number"]),
-label:has(input[type="date"]),
-label:has(input[type="email"]),
-label:has(input[type="tel"]),
-label:has(input[list]) {
-  grid-column: 1 / -1;
-  display: grid;
-  grid-template-columns: minmax(12rem, 1fr) 2fr;
+/* ── FOCUS STATE: yellow outline ── */
+input:focus-visible {
+  outline: none;
+  border-color: var(--secundaire-color);
+  box-shadow: 0 0 0 3px rgba(255, 201, 23, .45);
+  background-color: var(--input-bg);
 }
 
-label:has(input) input {
-  grid-column: 2;
-  width: 100%;
+/* ── ERROR STATE: red outline + transparent red bg ── */
+input.touched:invalid,
+input[aria-invalid="true"] {
+  border-color: var(--error-color) !important;
+  background-color: rgba(192, 57, 43, 0.06) !important;
+  box-shadow: 0 0 0 3px rgba(192, 57, 43, .18) !important;
 }
 
-/* RADIO BUTTONS */
+/* ── VALID STATE: green outline + transparent green bg ── */
+input.touched:valid:not([type="file"]):not([type="radio"]) {
+  border-color: var(--success-color) !important;
+  background-color: rgba(26, 122, 60, 0.06) !important;
+  box-shadow: 0 0 0 3px rgba(26, 122, 60, .15) !important;
+}
 
+/* Remove default :user-invalid so we control with .touched */
+input:user-invalid {
+  border-color: inherit;
+  background-color: inherit;
+}
+
+input:user-valid:not([type="file"]):not([type="radio"]) {
+  border-color: inherit;
+  background-color: inherit;
+}
+
+/* INPUT SIZE HELPERS */
+.input-small  { max-width: 7rem; }
+.input-medium { max-width: 14rem; }
+.input-large  { max-width: 22rem; }
+
+/* ── RADIO BUTTONS ── */
 input[type="radio"] {
   position: absolute;
   opacity: 0;
   pointer-events: none;
 }
 
-/* Radio card */
-
 label:has(input[type="radio"]) {
   grid-column: 1 / -1;
-
   display: block;
   width: 100%;
-
-  margin-top: .6rem;
-  padding: .9rem 1rem;
-
+  margin-top: .5rem;
+  padding: .8rem 1rem;
   border: 2px solid var(--radio-border);
-  border-radius: 10px;
-
+  border-radius: 8px;
   background-color: var(--radio-bg);
   color: var(--primaire-text-color);
-
   font-weight: 600;
+  font-size: .95rem;
   cursor: pointer;
-
-  transition:
-    background-color .2s ease,
-    border-color .2s ease,
-    box-shadow .2s ease,
-    transform .12s ease;
+  transition: background-color .2s, border-color .2s, box-shadow .2s, transform .1s;
+  min-height: unset;
+  padding-top: .8rem;
 }
-
-/* Hover */
 
 label:has(input[type="radio"]):hover {
   border-color: var(--secundaire-text-color);
   background-color: var(--radio-hover-bg);
 }
 
-/* Focus accessibility */
-
 label:has(input[type="radio"]:focus-visible) {
-  outline: 3px solid rgba(255, 201, 23, .45);
+  outline: 3px solid rgba(255,201,23,.55);
   outline-offset: 2px;
 }
-
-/* Checked state */
 
 label:has(input[type="radio"]:checked) {
   background-color: var(--radio-selected-bg);
   border-color: var(--secundaire-text-color);
-  color: var(--primaire-text-color);
-
-  box-shadow: 0 0 0 3px rgba(255, 201, 23, .2);
+  box-shadow: 0 0 0 3px rgba(255,201,23,.25);
 }
-
-/* Click effect */
 
 label:has(input[type="radio"]):active {
   transform: scale(.99);
 }
 
-/* LEGEND */
-
-legend {
-  font-weight: bold;
-  color: var(--primaire-legend-color);
-  font-size: 1.1rem;
-  margin-bottom: .5rem;
+/* ── ERROR + HINT SPANS ── */
+.field-error {
+  display: block;
+  font-size: .78rem;
+  color: var(--error-color);
+  font-weight: 600;
+  min-height: 1.1em;
+  margin-top: .2rem;
+  line-height: 1.2;
 }
 
-.firstlegend {
-  float: left;
-  padding-top: 1rem;
+.field-hint {
+  display: block;
+  font-size: .78rem;
+  color: var(--hint-color);
+  margin-top: .2rem;
+  line-height: 1.3;
 }
 
-.secondlegend {
-  font-size: 1rem;
+/* Radio group errors */
+fieldset > .field-error {
+  margin-top: .3rem;
 }
 
-/* TEXT */
-
-p {
-  color: var(--secundaire-text-color);
+/* ── CONDITIONAL SECTIONS ── */
+.open1, .open2, .open3, .open4, .open5 {
+  transition: all .2s ease;
 }
 
-/* INPUT SIZES */
-
-.input-small {
-  max-width: 6rem;
+.open1, .open2, .open3, .open4, .open5,
+.open6, .open7, .open8 {
+  display: none;
 }
 
-.input-medium {
-  max-width: 12rem;
+form:has(#deceased-married-yes:checked) .open1 { display: grid; }
+form:has(#deceased-married-act-yes:checked) .open2 { display: grid; }
+form:has(#kids-yes:checked) .open3 { display: grid; }
+form:has(#kid-deceased-yes:checked) .open4 { display: grid; }
+form:has(#will-deceased-yes:checked) .open5 { display: grid; }
+
+form:has(#bsn-option:checked) .open6 { display: contents; }
+form:has(#becon-option:checked) .open7 { display: contents; }
+form:has(#notary-option:checked) .open8 { display: contents; }
+
+/* When open6/7/8 label is shown via display:contents it needs styling */
+label.open6,
+label.open7,
+label.open8 {
+  grid-column: 1;
+  align-self: start;
+  padding-top: .75rem;
+  font-size: .9rem;
+  font-weight: 600;
+  color: var(--label-color);
 }
 
-.input-large {
-  max-width: 20rem;
+div.input-wrap.open6,
+div.input-wrap.open7,
+div.input-wrap.open8 {
+  grid-column: 2;
 }
 
-input:focus {
-  outline: none;
-  border-color: var(--secundaire-text-color);
-  box-shadow: 0 0 0 3px rgba(255, 201, 23, .25);
+/* ── VRAAG 2 VISIBILITY ── */
+.vraag2 {
+  display: none;
 }
 
-/* BUTTON */
+.vraag2.active {
+  display: grid;
+}
 
-button {
+/* ── CONTINUE BUTTON ── */
+.continue-wrap {
+  display: none;
+  width: min(860px, 100%);
+  margin: 0 auto 1.5rem auto;
+}
+
+.continue-wrap.visible {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.btn-continue {
   background-color: var(--secundaire-text-color);
-  color: white;
-  margin-top: 1rem;
-  margin-bottom: 3rem;
-  padding: 0.8rem 3rem;
+  color: #fff;
+  padding: .75rem 2rem;
   font-size: 1rem;
-  font-weight: normal;
+  font-weight: 600;
   border: none;
-  border-radius: 3px;
+  border-radius: 4px;
   cursor: pointer;
+  transition: background-color .15s;
 }
 
-button:hover {
-  background-color: #003082;
-  transition: ease-in .1s;
+.btn-continue:hover {
+  background-color: var(--primaire-color);
 }
 
-/* THEME TOGGLE */
+/* ── SUBMIT BUTTON ── */
+.submit-wrap {
+  display: none;
+  width: min(860px, 100%);
+  margin: 0 auto 3rem auto;
+  justify-content: flex-end;
+}
 
+.submit-wrap.visible {
+  display: flex;
+}
+
+button[type="submit"] {
+  background-color: var(--secundaire-text-color);
+  color: #fff;
+  padding: .8rem 2.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color .15s;
+}
+
+button[type="submit"]:hover {
+  background-color: var(--primaire-color);
+}
+
+/* ── THEME TOGGLE ── */
 .theme-toggle {
   display: flex;
   align-items: center;
-  gap: 0.8rem;
+  gap: .75rem;
   margin-left: auto;
   margin-right: 2rem;
 }
@@ -339,10 +423,7 @@ button:hover {
 .slider {
   position: absolute;
   cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
   background-color: #ccc;
   transition: .3s;
   border-radius: 34px;
@@ -355,169 +436,137 @@ button:hover {
   width: 20px;
   left: 3px;
   bottom: 3px;
-  background-color: white;
+  background-color: #fff;
   transition: .3s;
   border-radius: 50%;
 }
 
-.switch input:checked + .slider {
-  background-color: var(--primaire-color);
+.switch input:checked + .slider { background-color: var(--primaire-color); }
+.switch input:checked + .slider:before { transform: translateX(24px); }
+
+/* ── COUNTRY INPUT ROW ── */
+.country-input-row {
+  display: flex;
+  gap: .5rem;
+  align-items: center;
 }
 
-.switch input:checked + .slider:before {
-  transform: translateX(24px);
+.country-input-row input[list] {
+  flex: 1;
+  max-width: 14rem;
 }
 
-/* CONDITIONAL SECTIONS */
+.info-btn {
+  flex-shrink: 0;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  border: 2px solid var(--secundaire-text-color);
+  background: transparent;
+  color: var(--secundaire-text-color);
+  font-size: 1rem;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  transition: background .15s, color .15s;
+}
 
-.open1,
-.open2,
-.open3,
-.open4,
-.open5,
-.open6,
-.open7,
-.open8 {
+.info-btn:hover {
+  background: var(--secundaire-text-color);
+  color: #fff;
+}
+
+/* Tooltip */
+.country-wrap {
+  position: relative;
+}
+
+.country-tooltip {
   display: none;
+  position: absolute;
+  top: calc(100% + .5rem);
+  left: 0;
+  z-index: 100;
+  background: var(--fieldset-bg);
+  border: 2px solid var(--secundaire-text-color);
+  border-radius: 8px;
+  padding: .9rem 1.1rem;
+  min-width: 16rem;
+  max-width: 22rem;
+  box-shadow: 0 4px 16px rgba(0,0,0,.15);
+  font-size: .88rem;
+  line-height: 1.5;
+  color: var(--primaire-text-color);
 }
 
-form:has(#deceased-married-yes:checked) .open1 {
-  display: grid;
-}
-
-form:has(#deceased-married-act-yes:checked) .open2 {
-  display: grid;
-}
-
-form:has(#kids-yes:checked) .open3 {
-  display: grid;
-}
-
-form:has(#kid-deceased-yes:checked) .open4 {
-  display: grid;
-}
-
-form:has(#will-deceased-yes:checked) .open5 {
-  display: grid;
-}
-
-form:has(#bsn-option:checked) .open6 {
-  display: grid;
-  grid-template-columns: minmax(12rem, 1fr) 2fr;
-  align-items: center;
-  gap: .5rem 1rem;
-}
-
-form:has(#becon-option:checked) .open7 {
-   display: grid;
-  grid-template-columns: minmax(12rem, 1fr) 2fr;
-  align-items: center;
-  gap: .5rem 1rem;
-}
-
-form:has(#notary-option:checked) .open8 {
-  display: grid;
-  grid-template-columns: minmax(12rem, 1fr) 2fr;
-  align-items: center;
-  gap: .5rem 1rem;
-}
-
-/* VALIDATION */
-
-input:user-invalid {
-  border-color: var(--error-color);
-  background-color: rgba(192, 57, 43, 0.07);
-}
-
-input:user-valid:not([type="file"]):not([type="radio"]) {
-  border-color: var(--success-color);
-  background-color: rgba(26, 122, 60, 0.07);
-}
-
-/* ERROR + HINTS */
-
-.field-error {
+.country-tooltip.open {
   display: block;
-  font-size: .8rem;
-  color: var(--error-color);
-  font-weight: 600;
-  min-height: 1.2em;
-  margin-top: .25rem;
 }
 
-.field-hint {
+.country-tooltip strong {
   display: block;
-  font-size: .78rem;
-  color: var(--hint-color);
-  margin-top: -.5rem;
+  margin-bottom: .4rem;
+  color: var(--primaire-legend-color);
 }
 
-/* RESPONSIVE */
+.country-tooltip p {
+  margin: 0 0 .5rem 0;
+  grid-column: unset;
+  color: var(--primaire-text-color);
+  font-size: .85rem;
+}
 
+.country-code-display {
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--success-color);
+  min-height: 1.4em;
+}
+
+/* ── p tags (in fieldsets) ── */
+p {
+  color: var(--secundaire-text-color);
+  margin: 0 0 .5rem 0;
+}
+
+/* ── RESPONSIVE ── */
 @media (max-width: 640px) {
-  fieldset {
+  fieldset,
+  fieldset fieldset {
     grid-template-columns: 1fr;
   }
 
-  label:has(input) {
-    grid-template-columns: 1fr;
+  label:not(:has(input[type="radio"])):not(.switch):not(.theme-label) {
+    padding-top: .5rem;
+    min-height: unset;
   }
 
-  label:has(input) input,
-  input[type="text"],
-  input[type="number"],
-  input[type="date"],
-  input[type="email"],
-  input[type="tel"],
-  input[list] {
+  .input-wrap {
+    grid-column: 1;
+    padding-top: 0;
+  }
+
+  label.open6,
+  label.open7,
+  label.open8 {
     grid-column: 1;
   }
-}
 
-.vraag2 {
-  display: none;
-}
+  div.input-wrap.open6,
+  div.input-wrap.open7,
+  div.input-wrap.open8 {
+    grid-column: 1;
+  }
 
-form:has(
-  #initial-deceased:user-valid
-):has(
-  #lname-deceased:user-valid
-):has(
-  #bsn-deceased:user-valid
-):has(
-  #date-of-death-deceased:user-valid
-) .vraag2 {
-  display: block;
-}
+  header h1 {
+    font-size: 1rem;
+    margin: 1rem;
+  }
 
-button[type="submit"] {
-  display: none;
-}
-
-form:has(
-  #initial-deceased:user-valid
-):has(
-  #lname-deceased:user-valid
-):has(
-  #bsn-deceased:user-valid
-):has(
-  #date-of-death-deceased:user-valid
-):has(
-  input[name="kids"]:checked
-):has(
-  input[name="will-deceased"]:checked
-):has(
-  input[name="deceased-married"]:checked
-):has(
-  input[name="representative-type"]:checked
-):has(
-  #initial-representative:user-valid
-):has(
-  #lname-representative:user-valid
-):has(
-  #zipcode-nl:user-valid
-):has(
-  #city-nl:user-valid
-) button[type="submit"] {
-  display: block;
+  main {
+    padding: 1rem .75rem;
+  }
 }
